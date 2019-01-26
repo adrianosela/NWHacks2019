@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/adrianosela/NWHacks2019/api/endpoints"
+	"github.com/adrianosela/NWHacks2019/api/src/endpoints"
 )
 
 func main() {

@@ -1,0 +1,27 @@
+PODS:
+  - Alamofire (4.8.1)
+  - AppCenter (1.13.0):
+    - AppCenter/Analytics (= 1.13.0)
+    - AppCenter/Crashes (= 1.13.0)
+  - AppCenter/Analytics (1.13.0):
+    - AppCenter/Core
+  - AppCenter/Core (1.13.0)
+  - AppCenter/Crashes (1.13.0):
+    - AppCenter/Core
+
+DEPENDENCIES:
+  - Alamofire
+  - AppCenter
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - AppCenter
+
+SPEC CHECKSUMS:
+  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  AppCenter: a70408f15de23f925001bfc7b7473094a009a4eb
+
+PODFILE CHECKSUM: a6af007d2fb0745082d525ebe33b56f5c4869b08
+
+COCOAPODS: 1.5.3

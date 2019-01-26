@@ -17,13 +17,6 @@ type Prescription struct {
 	Patient   string                 `json:"patient,omitempty"`
 }
 
-// Indications represents the frequency and way of ingesting the meds
-type Indications struct {
-	DaysPerWeek int   `json:"days_per_week,omitempty"`
-	TimesPerDay int   `json:"times_per_day,omitempty"`
-	Time        []int `json:"times_of_day,omitempty"` // HOUR OF DAY FMT E.G. 1100, 2359, etc
-}
-
 // NewPrescriptionConfig represents all the necessary info to create a new prescription
 type NewPrescriptionConfig struct {
 	Medicines map[string]Indications `json:"medicines"`

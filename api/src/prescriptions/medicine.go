@@ -1,6 +1,6 @@
 package prescriptions
 
-// Medicine represnts
+// Medicine represents a particular medicine
 type Medicine struct {
 	Name        string   `json:"name"`
 	ID          string   `json:"med_id"`

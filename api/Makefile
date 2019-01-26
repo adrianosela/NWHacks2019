@@ -4,7 +4,7 @@ clean:
 	rm -rf pkg bin
 	rm nwhacks_api*
 
-deploy: dockerbuild
+deploy: dockerbuild down
 	docker run -d --name nwhacks_backend -p 8080:80 nwhacks_api	# run docker image as "nwhacks_backend"
 
 up: build

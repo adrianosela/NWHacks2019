@@ -10,7 +10,14 @@ import (
 func GetHandlers() *mux.Router {
 	router := mux.NewRouter()
 
-	router.Methods(http.MethodGet).Path("/mock").HandlerFunc(mockHandler)
+	// doctors
+	router.Methods(http.MethodPost).Path("/doctor").HandlerFunc(newDoctorHandler)
+
+	// patients
+	router.Methods(http.MethodPost).Path("/patient").HandlerFunc(newPatientHandler)
+
+	// prescriptions
+	router.Methods(http.MethodPost).Path("/prescription").HandlerFunc(newPrescriptionHandler)
 
 	return router
 }

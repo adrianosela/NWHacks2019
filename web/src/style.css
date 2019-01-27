@@ -2,13 +2,28 @@
     background-color: #33B099;
     border-color: #33B099;
 	color: white;
+	width: 80%;
+	left: 20%;
+}
+
+#breakdown {
+    color: white;
+    -webkit-transition: color 2000ms linear;
+    -ms-transition: color 2000ms linear;
+    transition: color 2000ms linear;
+}
+
+.sick {
+	position:relative;
 }
 
 .side-nav{
 	position: fixed;
 	background-color: #33B099;
 	width: 20%;
-	height: 100%;
+	top: 65px;
+	left: 0%;
+	height: calc(100% - 65px);
 }
 
 .form-control, input[type="text"]{
@@ -16,6 +31,7 @@
 	border-right: none;
 	border-top: none;
 	color: white;
+	border-color: white;
 	border-radius: 0px;
 }
 
@@ -28,3 +44,15 @@ box-shadow: 0 1px 0 0 #f48fb1;
 	width: 80%;
 	margin: auto;
 }
+
+.list-group-flush > .list-group-item, li {
+	color: #696969;
+	background-color: #33B099;
+	border-color: white;
+	margin-left: 10px;
+	margin-right: 10px;
+	padding: 5px;
+	padding-left: 10px;
+	border-top: none;
+}
+

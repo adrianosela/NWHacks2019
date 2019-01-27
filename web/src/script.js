@@ -17,12 +17,27 @@ function get_session(name){
 
 function createNode(element) {
       return document.createElement(element);
-  }
+}
 
 function append(parent, el) {
     return parent.appendChild(el);
-  }
-  
+}
+
+$( "#patients" )
+  .mouseover(function() {
+    //$( ".sick" ).animate( {top: "-55px;"} );
+    console.log("fuuuuck");
+  })
+  .mouseout(function() {
+    $( "p:first", this ).text( "mouse out" );
+  });
+
+
+function retreat(){
+		$(".sick").animate({top: '0px'});
+		console.log("hoooo");
+}
+	  
 function json_load(url){
 	  return new Promise((resolve, reject) => {
 		fetch(url)
@@ -57,6 +72,7 @@ function json_load(url){
 		  a.classList.add('list-group-item-action');
 		  a.classList.add('flex-column');
 		  a.classList.add('align-items-start');
+		  a.setAttribute("id", "single-patient");
 		  a.href = "patient.html";
 		  //a.style.width = "70%";
 		  a.style.float = "left";

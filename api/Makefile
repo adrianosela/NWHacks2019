@@ -4,8 +4,14 @@ clean:
 	rm -rf pkg bin
 	rm nwhacks_api*
 
-deploy: push
+deploy: push delete plan
 	az webapp create --resource-group NWHacks2019 --plan nwhackssp --name ezpill --deployment-container-image-name adrianosela/nwhacks_api:laptop_push # deploy to azure
+
+plan:
+	az appservice plan create --name nwhackssp --resource-group NWHacks2019 --sku S1 --is-linux
+
+delete:
+	az webapp delete --name ezpill --resource-group NWHacks2019 	# kill current azure deployment
 
 push: tag
 	docker push adrianosela/nwhacks_api:laptop_push			# push image to docker hub

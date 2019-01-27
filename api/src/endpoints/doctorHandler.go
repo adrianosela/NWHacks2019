@@ -7,6 +7,7 @@ import (
 	"net/http"
 
 	"github.com/adrianosela/NWHacks2019/api/src/objects/doctors"
+	"github.com/adrianosela/NWHacks2019/api/src/store"
 	"github.com/gorilla/mux"
 )
 
@@ -26,12 +27,19 @@ func (c *APIConfig) newDoctorHandler(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte(string("request is not of the correct format: " + err.Error())))
 		return
 	}
-	// create patient in store
-	d, err := doctors.NewDoctor(docReq)
-	if err != nil {
-		w.WriteHeader(http.StatusInternalServerError)
-		w.Write([]byte(err.Error()))
-		return
+	// create doctor object
+	d := doctors.NewDoctor(docReq)
+	if err = c.DB.PutDoctor(d); err != nil {
+		switch err {
+		case store.ErrItemExists:
+			w.WriteHeader(http.StatusInternalServerError)
+			w.Write([]byte("UUID Collition occured"))
+			return
+		default:
+			w.WriteHeader(http.StatusInternalServerError)
+			w.Write([]byte(string(":(")))
+			return
+		}
 	}
 	// marshal response payload
 	respBytes, err := json.Marshal(d)
@@ -55,10 +63,10 @@ func (c *APIConfig) getDoctorHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	// get doctor from store
-	d, err := doctors.GetDoctor(id)
+	d, err := c.DB.GetDoctor(id)
 	if err != nil {
 		switch err {
-		case doctors.ErrDoctorNotFound:
+		case store.ErrNotInStore:
 			w.WriteHeader(http.StatusNotFound)
 			w.Write([]byte(fmt.Sprintf("doctor %s not found", id)))
 		default:

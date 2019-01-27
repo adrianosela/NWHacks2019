@@ -8,6 +8,7 @@ import (
 
 	"github.com/adrianosela/NWHacks2019/api/src/endpoints"
 	"github.com/adrianosela/NWHacks2019/api/src/store"
+	"github.com/gorilla/handlers"
 )
 
 func main() {
@@ -32,7 +33,6 @@ func main() {
 		DeployTime: time.Now(),
 	})
 
-	if err = http.ListenAndServe(":80", h); err != nil {
-		log.Fatal("ListenAndServe Error: ", err)
-	}
+	// we know... this is trash but hey! No more CORS issues
+	log.Fatal(http.ListenAndServe(":80", handlers.CORS(handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization"}), handlers.AllowedMethods([]string{"GET", "POST", "PUT", "HEAD", "OPTIONS"}), handlers.AllowedOrigins([]string{"*"}))(h)))
 }

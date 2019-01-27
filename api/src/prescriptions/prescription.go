@@ -46,10 +46,10 @@ func NewPrescription(config NewPrescriptionConfig) *Prescription {
 }
 
 // GetPrescription returns prescription details given a prescription id
-func GetPrescription(id string) *Prescription {
+func GetPrescription(id string) (*Prescription, error) {
 	// TODO: hook DB here
 	return &Prescription{
 		AddedAt: time.Now().UnixNano(),
 		ID:      id,
-	}
+	}, nil
 }

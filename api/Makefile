@@ -5,7 +5,7 @@ clean:
 	rm nwhacks_api*
 
 deploy: push delete plan
-	az webapp create --resource-group NWHacks2019 --plan nwhackssp --name ezpill --deployment-container-image-name adrianosela/nwhacks_api:laptop_push # deploy to azure
+	az webapp create --resource-group NWHacks2019 --plan nwhackssp --name nwproject2019 --deployment-container-image-name adrianosela/nwhacks_api:laptop_push # deploy to azure
 
 plan:
 	az appservice plan create --name nwhackssp --resource-group NWHacks2019 --sku S1 --is-linux

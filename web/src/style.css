@@ -1,6 +1,6 @@
 .navbar {
-    background-color: #33B099;
-    border-color: #33B099;
+    background-color: #055883;
+    border-color: #055883;
 	color: white;
 	width: 80%;
 	left: 20%;
@@ -10,7 +10,7 @@
     color: white;
     -webkit-transition: color 2000ms linear;
     -ms-transition: color 2000ms linear;
-    transition: color 2000ms linear;
+    transition: color 1000ms linear;
 }
 
 .sick {

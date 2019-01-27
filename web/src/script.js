@@ -1,5 +1,5 @@
 function session_start(){
-	sessionStorage.doctor_id = "";
+	sessionStorage.patient_id = "";
 	var bs = {patients: []};
 	sessionStorage.doctor = "";
 	sessionStorage.patient = JSON.stringify(bs);;
@@ -55,11 +55,11 @@ function json_load(url){
  async function doctor_load(){
 	  
 	  //const url = 'https://randomuser.me/api/?results=10';
-	  const url = 'http://slimjim.azurewebsites.net/doctor/9c0a6dab-287a-421a-84fd-cbe404021af8';
+	  const url = 'http://applepen.azurewebsites.net/doctor/cc7f1487-555c-46af-87dd-6c57f467406c';
 	  
 	  json_load(url).then( (resp) => {
 		return resp.patients.map(function(patient) {
-			console.log(patient);
+			console.log(resp);
 			append_patients(patient);
 		});
 	  }
@@ -77,18 +77,23 @@ function json_load(url){
 	  while(resp['patients'].length > y){
 		  //console.log(resp['patients'].length);
 		  
-		  const url = 'http://slimjim.azurewebsites.net/patient/' + resp['patients'][y];
+		  const url = 'http://applepen.azurewebsites.net/patient/' + resp['patients'][y];
 		  console.log(url);
-		  console.log(y);
+
 	  json_load(url).then( (resp) => {
-		  console.log(resp);
+		  console.log(resp['prescriptions']);
 		  ///////////////////////////////////////
-			json_load('http://slimjim.azurewebsites.net/prescription/' + resp['prescriptions'][0]).then( (prescription) => {
-				console.log('http://slimjim.azurewebsites.net/prescription/' + resp['prescriptions'][0]);
-				console.log(y);
-				prescription_load(prescription, y);
-				
-			});
+		  for (var key in resp['prescriptions']) {
+			  //console.log(resp['prescriptions'][key]);
+			json_load('http://applepen.azurewebsites.net/prescription/' + resp['prescriptions'][key]).then( (prescription) => {
+			
+			
+				console.log('http://applepen.azurewebsites.net/prescription/' + key);
+				console.log(prescription);
+				prescription_load(prescription, resp.name);
+			});	
+			}
+			
 		///////////////////////////////////////////
 
 		  let img = createNode('img'),
@@ -100,14 +105,12 @@ function json_load(url){
 		  img.style.height = "30px";
 		  img.style.float = "left";
 		  
-		  a.innerHTML = '<div class=\"d-flex w-100 justify-content-between"><h5 class="mb-1">' + `${resp.name}` + '</h5><small>3 days ago</small></div><p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p><small>' + `${resp.age}` + ' , ' + `${resp.gender}` + '</small>' ;
+		  a.innerHTML = '<div class=\"d-flex w-100 justify-content-between"><h5 class="mb-1">' + `${resp.name}` + '</h5><small>3 days ago</small></div><p class="mb-1">' + `${resp.phone}` + '</p><small>' + `${resp.age}` + ' , ' + `${resp.gender}` + '</small>' ;
 		  a.classList.add('list-group-item');
 		  a.classList.add('list-group-item-action');
 		  a.classList.add('flex-column');
 		  a.classList.add('align-items-start');
-		  a.setAttribute("id", "single-patient");
-		  a.href = "patient.html";
-		  //a.style.width = "70%";
+		  a.setAttribute("id", "sp " + `${resp.id}`);
 		  a.style.float = "left";
 		  
 		  append(document.getElementById('patients'), a);
@@ -122,6 +125,7 @@ function json_load(url){
 	  
 	  //json_load(url).then( (resp) => {
 		//return resp.results.map(function(prescription) {
+	for (var key in prescription['medicines']) {
 		  let div = createNode('div'),
 			  img = createNode('img'),
 			  h5 = createNode('h5');
@@ -134,7 +138,7 @@ function json_load(url){
 		  
 		  h5.style.float = "left";
 		  h5.style.color = "white";
-		  h5.innerHTML = "&nbsp Prescription " + `${x}`;
+		  h5.innerHTML = "&nbsp Rx- " + `${x}`;
 
 		  ul.classList.add("list-group");
 		  ul.classList.add("list-group-flush");
@@ -152,6 +156,7 @@ function json_load(url){
 			return error;
 		}); 
 		  
+	}
 		  
 		//});
 	  //}
@@ -164,22 +169,21 @@ function json_load(url){
 	  
 	  //const url = 'http://meth.azurewebsites.net/patient/' + resp['patients'][i];
 	  var size = Object.size(prescription['medicines']);
-	  console.log(size);
-	  //json_load(url).then( (resp) => {
-		//return resp.results.map(function(med) {
-			//console.log(prescription['medicines'].keySet());
+	  console.log(prescription['medicines']);
+
 		for (var key in prescription['medicines']) {
-			//	console.log(prescription['medicines'][i]);
+				console.log(key);
 		  let span = createNode('span'),
 			  li = createNode('li');
 
 		  
-		  li.innerHTML = `${key}` + " Left:" + `${prescription.remaining[key]} `;
+		  li.innerHTML = `${key}` + " Left:" + `${prescription.remaining[key]}` + " ";
 		  li.classList.add('list-group-item');
-			  span.innerHTML = `${prescription.claimed}`;
+		  if(`${prescription.remaining[key]}` < 5){
+			  span.innerHTML = "Refill";
 			  span.classList.add('badge');
-			  span.classList.add('badge-secondary');
-
+			  span.classList.add('badge-danger');
+		  }
 		  append(li, span);
 		  append(ul, li);
 		//});

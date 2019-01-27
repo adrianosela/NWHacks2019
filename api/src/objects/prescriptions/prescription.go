@@ -41,13 +41,12 @@ func NewPrescription(config NewPrescriptionConfig) *Prescription {
 	}
 
 	// FIXME: STORE PRESCRIPTION IN DB
-
 	return p
 }
 
 // GetPrescription returns prescription details given a prescription id
 func GetPrescription(id string) (*Prescription, error) {
-	// TODO: hook DB here
+	// FIXME: GET PRESCRIPTION FROM DB
 	return &Prescription{
 		AddedAt: time.Now().UnixNano(),
 		ID:      id,

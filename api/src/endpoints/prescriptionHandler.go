@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	"github.com/adrianosela/NWHacks2019/api/src/prescriptions"
+	"github.com/adrianosela/NWHacks2019/api/src/objects/prescriptions"
 	"github.com/gorilla/mux"
 )
 
@@ -40,6 +40,7 @@ func newPrescriptionHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func getPrescriptionHandler(w http.ResponseWriter, r *http.Request) {
+	// get prescription id from URL
 	getParams := mux.Vars(r)
 	id, ok := getParams["id"]
 	if !ok {
@@ -47,14 +48,27 @@ func getPrescriptionHandler(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte(string("no id specified")))
 		return
 	}
-
-	responseBytes, err := json.Marshal(prescriptions.GetPrescription(id))
+	// get prescription from store
+	p, err := prescriptions.GetPrescription(id)
+	if err != nil {
+		switch err {
+		case prescriptions.ErrPrescriptionDoesNotExist:
+			w.WriteHeader(http.StatusNotFound)
+			w.Write([]byte(err.Error()))
+			return
+		default:
+			w.WriteHeader(http.StatusInternalServerError)
+			w.Write([]byte(string(":(")))
+			return
+		}
+	}
+	// marshal response
+	responseBytes, err := json.Marshal(p)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		w.Write([]byte(string("could not marshall response")))
 		return
 	}
-
 	w.WriteHeader(http.StatusOK)
 	w.Write(responseBytes)
 	return

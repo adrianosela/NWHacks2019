@@ -1,6 +1,6 @@
 function session_start(){
-	sessionStorage.doctor_id = "";
-	sessionStorage.patient_id = "";
+	sessionStorage.doctor = "";
+	sessionStorage.patient = "";
 }
 
 function set_doctor(doctor){
@@ -44,15 +44,19 @@ function json_load(url){
 	  json_load(url).then( (resp) => {
 		return resp.results.map(function(patient) {
 		  let li = createNode('li'),
-			  img = createNode('img'),
-			  span = createNode('span');
+			  p = createNode('p'),
+			  a = createNode('a');
 			  //details = createNode('p');
-		  img.src = patient.picture.medium;
-		  span.innerHTML = `${patient.name.first} ${patient.name.last}`;
+		  //img.src = patient.picture.medium;
+		  a.innerHTML = '<h4>' + `${patient.name.first} ${patient.name.last}` + '</h4>';
+		  a.classList.add('list-group-item');
+		  a.classList.add('list-group-item-action');
+		  a.href = "patient.html";
+		  p.innerHTML = `${patient.location.street} ${patient.location.city}`;
 		  //details.innerHTML = `${patient.name.first} ${patient.name.last}`;
-		  append(li, img);
-		  append(li, span);
-		  append(document.getElementById('authors'), li);
+		  //append(li, img);
+		  append(a, p);
+		  append(document.getElementById('patients'), a);
 		});
 	  }
 	  

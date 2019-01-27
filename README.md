@@ -1,5 +1,7 @@
 ## NWHacks 2019 Project Repo
 
+![](wireframe.gif)
+
 #### Components
 * Back-end under the **api/** dir
 * UI/UX assets live under the **UI ICONS/** dir

@@ -42,6 +42,7 @@ func NewPatient(config NewPatientConfig) (*Patient, error) {
 		}
 		np.Prescriptions = []string{config.NewPrescriptionID}
 		np.Doctors = []string{pres.Doctor}
+		// FIXME: CLAIM PRESCRIPTION FOR PATIENT
 	}
 	// FIXME: STORE PATIENT IN DB
 	return np, nil
@@ -51,6 +52,6 @@ func NewPatient(config NewPatientConfig) (*Patient, error) {
 func GetPatient(id string) (*Patient, error) {
 	// FIXME: GET PATIENT FROM DB
 	return &Patient{
-		ID: id, // FIXME: check unique
+		ID: id,
 	}, nil
 }

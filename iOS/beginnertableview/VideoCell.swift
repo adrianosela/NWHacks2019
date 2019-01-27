@@ -18,9 +18,9 @@ class VideoCell: UITableViewCell {
     
     
     func setPrescription(data: Tableview1) {
-        videoImageView.image = #imageLiteral(resourceName: "traingularpill_green")
+        videoImageView.image = UIImage(named: "pill_"+String(Int.random(in: 1 ..< 4)))
         videoTitleLabel.text = data.name
-        dosage.text = data.dose
+        dosage.text = data.dose!+"mg"
         doctor.text = data.doctor
         remaining.text = String(data.remaining!)
         

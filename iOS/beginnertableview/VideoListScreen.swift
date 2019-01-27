@@ -14,28 +14,17 @@ class VideoListScreen: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var videos: [Video] = []
-    private let baseURL = "http://applepen.azurewebsites.net"
+    private let baseURL = "http://ezpillzz.azurewebsites.net"
     private let jsonDecoder = JSONDecoder()
     private let jsonEncoder = JSONEncoder()
     var tdata = [Tableview1]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        videos = createArray()
-        getAllPrescription(userId: "3c1d77b9-79ff-4b09-a553-386664a634ba")
+        let id = UserDefaults.standard.string(forKey: "id")
+        getAllPrescription(userId: id!)
     }
-    
-    
-    func createArray() -> [Video] {
-        
-        let video1 = Video(image: #imageLiteral(resourceName: "traingularpill_green"), title: "Advil")
-        let video2 = Video(image: #imageLiteral(resourceName: "pill_green"), title: "Morphine")
-        let video3 = Video(image: #imageLiteral(resourceName: "circularpill_green"), title: "NWHacks KUSH")
-        let video4 = Video(image: #imageLiteral(resourceName: "pill_green"), title: "Google HAZE")
-        let video5 = Video(image: #imageLiteral(resourceName: "traingularpill_green"), title: "Pill 5")
-        let video6 = Video(image: #imageLiteral(resourceName: "circularpill_green"), title: "Pill 6")
-        return [video1, video2, video3, video4, video5, video6]
-    }
+
     
     public func getAllPrescription(userId: String) {
         let path = "/patient_prescriptions/"+userId
@@ -61,7 +50,7 @@ class VideoListScreen: UIViewController {
                     }
                 }
                 print(info)
-                Alamofire.request("http://applepen.azurewebsites.net"+"/patient_doctors/"+userId, method: .get, parameters: parameters).responseJSON {
+                Alamofire.request("http://ezpillzz.azurewebsites.net"+"/patient_doctors/"+userId, method: .get, parameters: parameters).responseJSON {
                     response in
                     print(response)
                     if let json = response.data, let listDoctors = try? self.jsonDecoder.decode(ListDoctors.self, from: json) {

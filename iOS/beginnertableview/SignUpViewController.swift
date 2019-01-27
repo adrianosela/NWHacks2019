@@ -10,6 +10,10 @@ import UIKit
 import QRCodeReader
 import AVFoundation
 import Alamofire
+import AppCenter
+import AppCenterAnalytics
+
+import AppCenterCrashes
 
 class SignUpViewController: UIViewController {
 
@@ -23,6 +27,31 @@ class SignUpViewController: UIViewController {
     @objc func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         //Causes the view (or one of its embedded text fields) to resign the first responder status and drop into background
         view.endEditing(true)
+    }
+    
+    func signupNewUser(prescriptionId: String, name: String, email: String, phone: String, age:Int) {
+        let parameters: [String: Any] = [
+            "prescription_id": prescriptionId,
+            "name": name,
+            "email": email,
+            "phone": phone,
+            "age": age
+        ]
+        print(parameters)
+        Alamofire.request("http://ezpillzz.azurewebsites.net"+"/patient", method: .post, parameters: parameters,encoding: JSONEncoding.default).responseJSON {
+            response in
+            if let result = response.result.value {
+                let JSON = result as! NSDictionary
+                print(JSON["id"])
+                UserDefaults.standard.set(JSON["id"]!, forKey: "id")
+                self.showGame()
+            }
+            print(response)
+        }
+    }
+    
+    private func showGame(){
+            self.performSegue(withIdentifier: "login", sender: self)
     }
     
     @IBAction func signup(_ sender: Any) {
@@ -40,6 +69,7 @@ class SignUpViewController: UIViewController {
         readerVC.completionBlock = { (result: QRCodeReaderResult?) in
             if let result = result {
                 print("Completion with result: \(result.value.deletingPrefix("http://")) of type \(result.metadataType)")
+                self.signupNewUser(prescriptionId: result.value.deletingPrefix("http://"), name: self.name.text!, email: self.email.text!, phone: self.phone.text!, age: Int(self.age.text!)!)
             }
         }
         
@@ -106,7 +136,7 @@ extension SignUpViewController: QRCodeReaderViewControllerDelegate {
             loadingIndicator.startAnimating();
             
             alert.view.addSubview(loadingIndicator)
-            
+            MSAnalytics.trackEvent("Prescription Added")
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             
             self?.present(alert, animated: true, completion: nil)
@@ -154,19 +184,3 @@ extension SignUpViewController: QRCodeReaderViewControllerDelegate {
     }
 }
 
-
-extension LandingViewController {
-    func signupNewUser(prescriptionId: String, name: String, email: String, phone: String, age:Int) {
-        let parameters: [String: Any] = [
-            "prescription_id": prescriptionId,
-            "name": name,
-            "email": email,
-            "phone": phone,
-            "age": age
-        ]
-        Alamofire.request("http://applepen.azurewebsites.net"+"/patient/", method: .post, parameters: parameters).responseJSON {
-            response in
-            print(response)
-        }
-    }
-}

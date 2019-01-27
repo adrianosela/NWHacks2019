@@ -20,11 +20,12 @@ class DoctorCell: UITableViewCell {
     @IBAction func messageAction(_ sender: Any) {
     }
     
-    func setPrescription(video: Video) {
-        let url = URL(string: "https://felipeaccount.blob.core.windows.net/nwh/Doctor1.png")
+    func setPrescription(doc: Doctor) {
+        let url = URL(string: doc.PhotoURL!)
         videoImageView.kf.indicatorType = .activity
         videoImageView.kf.setImage(with: url)
-        videoTitleLabel.text = video.title
+        videoTitleLabel.text = doc.Name
+        profession.text = doc.Specializaion
     }
     
 }

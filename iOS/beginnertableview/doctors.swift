@@ -7,45 +7,54 @@
 //
 
 import UIKit
+import Alamofire
 
 class Doctors: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    
-    var videos: [Video] = []
+    private let jsonDecoder = JSONDecoder()
+    private let jsonEncoder = JSONEncoder()
+    var data: ListDoctors?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        videos = createArray()
+        let id = UserDefaults.standard.string(forKey: "id")
+
+        getDoctors(userId: id!)
     }
     
-    
-    func createArray() -> [Video] {
-        
-        let video1 = Video(image: #imageLiteral(resourceName: "Doctor2"), title: "Dr. Will Smith")
-        let video2 = Video(image: #imageLiteral(resourceName: "Doctor3"), title: "Dr. Haze Cush")
-        let video3 = Video(image: #imageLiteral(resourceName: "Doctor2"), title: "Dr. House")
-        let video4 = Video(image: #imageLiteral(resourceName: "Doctor1"), title: "Google HAZE")
-        let video5 = Video(image: #imageLiteral(resourceName: "Doctor3"), title: "Pill 5")
-        let video6 = Video(image: #imageLiteral(resourceName: "Doctor3"), title: "Pill 6")
-        
-        return [video1, video2, video3, video4, video5, video6]
+    func getDoctors(userId: String) {
+        let parameters: [String: Any] = [
+            "id": userId
+        ]
+        Alamofire.request("http://ezpillzz.azurewebsites.net"+"/patient_doctors/" + userId, method: .get, parameters: parameters).responseJSON {
+            response in
+            print(response)
+            if let json = response.data, let listDoctors = try? self.jsonDecoder.decode(ListDoctors.self, from: json) {
+                print(listDoctors, listDoctors.Doctors.count)
+                self.data = listDoctors
+                self.tableView.reloadData()
+            } else {
+                print(response.error ?? "Unknow Error")
+            }
+        }
     }
+    
 }
 
 
 extension Doctors: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return videos.count
+        return data?.Doctors.count ?? 0
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let video = videos[indexPath.row]
+        let doc = data?.Doctors[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "DoctorCell") as! DoctorCell
-        cell.setPrescription(video: video)
+        if((doc) != nil) {cell.setPrescription(doc: doc!)}
         
         return cell
     }

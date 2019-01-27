@@ -768,6 +768,7 @@
                         <outlet property="name" destination="6Db-oa-Kdd" id="RO4-aT-ePU"/>
                         <outlet property="pass" destination="VQt-Tl-PNK" id="rcc-uN-pr4"/>
                         <outlet property="phone" destination="phm-l4-1Cu" id="bZt-li-mml"/>
+                        <segue destination="msa-Po-QR1" kind="show" identifier="login" id="akX-lB-t1N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9T4-oR-mCl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -853,4 +854,7 @@
         <image name="phone_green" width="71" height="71"/>
         <image name="pill" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="akX-lB-t1N"/>
+    </inferredMetricsTieBreakers>
 </document>

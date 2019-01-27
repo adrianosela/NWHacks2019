@@ -9,6 +9,7 @@ target 'BeginnerTableView' do
   pod 'Alamofire'
   pod 'AppCenter'
   pod 'Kingfisher', '~> 5.0'
+  pod 'AppCenter/Push'
  
   # Pods for BeginnerTableView
 

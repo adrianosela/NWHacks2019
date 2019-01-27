@@ -30,10 +30,10 @@ struct Prescription: Codable {
 }
 
 struct ListPrescription: Codable {
-    var Prescriptions: [Prescription]
+    var _Prescriptions: [Prescription]
     
     private enum CodingKeys: String, CodingKey {
-        case Prescriptions = "prescriptions"
+        case _Prescriptions = "prescriptions"
     }
 }
 

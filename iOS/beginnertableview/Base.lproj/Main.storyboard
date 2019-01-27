@@ -593,18 +593,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NFc-cQ-9aB">
-                                <rect key="frame" x="122.5" y="587" width="130" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="130" id="Fpz-4G-ZmH"/>
-                                </constraints>
-                                <state key="normal" title="Skip with QR code">
-                                    <color key="titleColor" red="0.17254901959999999" green="0.42352941179999998" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                                <connections>
-                                    <action selector="QRCodeAction:" destination="e6O-p9-jPx" eventType="touchUpInside" id="o4l-UG-myh"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LOGO_EZPILL_maroon" translatesAutoresizingMaskIntoConstraints="NO" id="Xzc-U8-3TN">
                                 <rect key="frame" x="67.5" y="106" width="240" height="128"/>
                                 <constraints>
@@ -613,7 +601,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GGj-3a-ewT">
-                                <rect key="frame" x="87.5" y="402" width="200" height="30"/>
+                                <rect key="frame" x="87.5" y="432" width="200" height="30"/>
                                 <color key="backgroundColor" red="0.17254901959999999" green="0.42352941179999998" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="bsG-2g-Msj"/>
@@ -626,7 +614,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="17c-dP-Zxz">
-                                <rect key="frame" x="87.5" y="457" width="200" height="30"/>
+                                <rect key="frame" x="87.5" y="487" width="200" height="30"/>
                                 <color key="backgroundColor" red="0.17254901959999999" green="0.42352941179999998" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="eiJ-XD-974"/>
@@ -643,12 +631,10 @@
                         <constraints>
                             <constraint firstItem="17c-dP-Zxz" firstAttribute="centerX" secondItem="fcG-2R-Vzn" secondAttribute="centerX" id="6zC-Il-JcI"/>
                             <constraint firstItem="Xzc-U8-3TN" firstAttribute="centerX" secondItem="fcG-2R-Vzn" secondAttribute="centerX" id="PE6-V9-oEc"/>
-                            <constraint firstItem="NFc-cQ-9aB" firstAttribute="top" secondItem="17c-dP-Zxz" secondAttribute="bottom" constant="100" id="PHL-Au-DJL"/>
                             <constraint firstItem="Xzc-U8-3TN" firstAttribute="top" secondItem="Kta-4l-MiY" secondAttribute="bottom" constant="86" id="fQt-wZ-hNw"/>
+                            <constraint firstItem="0of-yp-R1r" firstAttribute="top" secondItem="17c-dP-Zxz" secondAttribute="bottom" constant="150" id="gwV-AQ-M6h"/>
                             <constraint firstItem="17c-dP-Zxz" firstAttribute="top" secondItem="GGj-3a-ewT" secondAttribute="bottom" constant="25" id="hhB-bS-syA"/>
-                            <constraint firstItem="0of-yp-R1r" firstAttribute="top" secondItem="NFc-cQ-9aB" secondAttribute="bottom" constant="50" id="jXA-dF-7HA"/>
                             <constraint firstItem="GGj-3a-ewT" firstAttribute="centerX" secondItem="fcG-2R-Vzn" secondAttribute="centerX" id="k2L-f9-897"/>
-                            <constraint firstItem="NFc-cQ-9aB" firstAttribute="centerX" secondItem="fcG-2R-Vzn" secondAttribute="centerX" id="vUd-xb-xRh"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -727,7 +713,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="aAM-bv-MkW"/>
                                 </constraints>
-                                <state key="normal" title="Sign Up">
+                                <state key="normal" title="Continue with QR code">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>

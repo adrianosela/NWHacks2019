@@ -17,9 +17,13 @@ class VideoCell: UITableViewCell {
     @IBOutlet weak var remaining: UILabel!
     
     
-    func setPrescription(video: Video) {
-        videoImageView.image = video.image
-        videoTitleLabel.text = video.title
+    func setPrescription(data: Tableview1) {
+        videoImageView.image = #imageLiteral(resourceName: "traingularpill_green")
+        videoTitleLabel.text = data.name
+        dosage.text = data.dose
+        doctor.text = data.doctor
+        remaining.text = String(data.remaining!)
+        
     }
     
 }

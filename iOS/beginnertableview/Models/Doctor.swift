@@ -12,20 +12,26 @@ struct Doctor: Codable {
     var ID: String
     var Name: String
     var Office: String
-    var OfficePhone: String
+    var OfficePhone: String?
     var Specializaion: String
-    var PhotoURL: String
+    var PhotoURL: String?
     var Patients: [String]
     
     private enum CodingKeys: String, CodingKey {
         case ID = "id"
         case Name = "name"
         case Office = "office"
+        case OfficePhone = "office_phone"
         case Specializaion = "specialization"
+        case PhotoURL = "photo_url"
         case Patients = "patients"
     }
 }
 
-struct Doctors: Codable {
-    var Doctors 
+struct ListDoctors: Codable {
+    var Doctors: [Doctor]
+    
+    private enum CodingKeys: String, CodingKey {
+        case Doctors = "doctors"
+    }
 }

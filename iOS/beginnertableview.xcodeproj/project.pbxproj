@@ -18,6 +18,7 @@
 		559F962A21FDF8E4004730E1 /* Indications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528FE6221FDB47A00CB2C6E /* Indications.swift */; };
 		559F962B21FDF8E4004730E1 /* Doctor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528FE5F21FDB47A00CB2C6E /* Doctor.swift */; };
 		559F962C21FDF8E4004730E1 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528FE6021FDB47A00CB2C6E /* Patient.swift */; };
+		559F962E21FE07A5004730E1 /* Tables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559F962D21FE07A5004730E1 /* Tables.swift */; };
 		55C484B021FDA88D00EE7D25 /* doctors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C484AF21FDA88D00EE7D25 /* doctors.swift */; };
 		A363EB5BE0AB9D334206046D /* Pods_BeginnerTableView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A780CD25797EF8EA6003881 /* Pods_BeginnerTableView.framework */; };
 		ED47EDA11ECF4D0E00F5FC0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED47EDA01ECF4D0E00F5FC0E /* AppDelegate.swift */; };
@@ -44,6 +45,7 @@
 		5528FE6621FDC49D00CB2C6E /* DoctorsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DoctorsTableViewCell.swift; path = beginnertableview/DoctorsTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		5528FE6821FDC67000CB2C6E /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CalendarViewController.swift; path = beginnertableview/CalendarViewController.swift; sourceTree = SOURCE_ROOT; };
 		5528FE6A21FDE07800CB2C6E /* logoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = logoutViewController.swift; path = beginnertableview/logoutViewController.swift; sourceTree = SOURCE_ROOT; };
+		559F962D21FE07A5004730E1 /* Tables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Tables.swift; path = beginnertableview/Tables.swift; sourceTree = SOURCE_ROOT; };
 		55C484AF21FDA88D00EE7D25 /* doctors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = doctors.swift; path = beginnertableview/doctors.swift; sourceTree = SOURCE_ROOT; };
 		89B18B4EFAFC6D4D1454B05A /* Pods-BeginnerTableView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeginnerTableView.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeginnerTableView/Pods-BeginnerTableView.release.xcconfig"; sourceTree = "<group>"; };
 		ED47ED9D1ECF4D0E00F5FC0E /* BeginnerTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeginnerTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,6 +148,7 @@
 				5528FE6621FDC49D00CB2C6E /* DoctorsTableViewCell.swift */,
 				5528FE6821FDC67000CB2C6E /* CalendarViewController.swift */,
 				5528FE6A21FDE07800CB2C6E /* logoutViewController.swift */,
+				559F962D21FE07A5004730E1 /* Tables.swift */,
 			);
 			path = BeginnerTableView;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				559F962B21FDF8E4004730E1 /* Doctor.swift in Sources */,
 				5510CFC321FD6A3100D4F456 /* LandingViewController.swift in Sources */,
 				559F962C21FDF8E4004730E1 /* Patient.swift in Sources */,
+				559F962E21FE07A5004730E1 /* Tables.swift in Sources */,
 				55C484B021FDA88D00EE7D25 /* doctors.swift in Sources */,
 				5510CFC121FD619100D4F456 /* QRCodeViewController.swift in Sources */,
 			);

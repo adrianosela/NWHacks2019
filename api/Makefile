@@ -4,16 +4,19 @@ clean:
 	rm -rf pkg bin
 	rm nwhacks_api*
 
-upload: tag
-	docker push adrianosela/nwhacks_api:laptop_push
+deploy: push
+	az webapp create --resource-group NWHacks2019 --plan nwhackssp --name ezpill --deployment-container-image-name adrianosela/nwhacks_api:laptop_push # deploy to azure
+
+push: tag
+	docker push adrianosela/nwhacks_api:laptop_push			# push image to docker hub
 
 tag: dockerbuild
-	docker tag nwhacks_api:latest adrianosela/nwhacks_api:laptop_push
+	docker tag nwhacks_api:latest adrianosela/nwhacks_api:laptop_push # tag image with the docker hub repo name
 
-deploy: dockerbuild down
+up: dockerbuild down
 	docker run -d --name nwhacks_backend -p 8080:80 nwhacks_api	# run docker image as "nwhacks_backend"
 
-up: build
+run: build
 	./nwhacks_api_local 						# run binary
 
 dockerbuild:

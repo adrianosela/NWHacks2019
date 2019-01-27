@@ -13,6 +13,11 @@
 		5528FE6721FDC49D00CB2C6E /* DoctorsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528FE6621FDC49D00CB2C6E /* DoctorsTableViewCell.swift */; };
 		5528FE6921FDC67000CB2C6E /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528FE6821FDC67000CB2C6E /* CalendarViewController.swift */; };
 		5528FE6B21FDE07800CB2C6E /* logoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528FE6A21FDE07800CB2C6E /* logoutViewController.swift */; };
+		559F962821FDF8E4004730E1 /* Medicine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528FE5E21FDB47A00CB2C6E /* Medicine.swift */; };
+		559F962921FDF8E4004730E1 /* Prescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528FE6121FDB47A00CB2C6E /* Prescription.swift */; };
+		559F962A21FDF8E4004730E1 /* Indications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528FE6221FDB47A00CB2C6E /* Indications.swift */; };
+		559F962B21FDF8E4004730E1 /* Doctor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528FE5F21FDB47A00CB2C6E /* Doctor.swift */; };
+		559F962C21FDF8E4004730E1 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528FE6021FDB47A00CB2C6E /* Patient.swift */; };
 		55C484B021FDA88D00EE7D25 /* doctors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C484AF21FDA88D00EE7D25 /* doctors.swift */; };
 		A363EB5BE0AB9D334206046D /* Pods_BeginnerTableView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A780CD25797EF8EA6003881 /* Pods_BeginnerTableView.framework */; };
 		ED47EDA11ECF4D0E00F5FC0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED47EDA01ECF4D0E00F5FC0E /* AppDelegate.swift */; };
@@ -30,11 +35,11 @@
 		5510CFC021FD619100D4F456 /* QRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QRCodeViewController.swift; path = beginnertableview/QRCodeViewController.swift; sourceTree = SOURCE_ROOT; };
 		5510CFC221FD6A3100D4F456 /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LandingViewController.swift; path = beginnertableview/LandingViewController.swift; sourceTree = SOURCE_ROOT; };
 		5528FE5C21FDB47900CB2C6E /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
-		5528FE5E21FDB47A00CB2C6E /* Medicine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Medicine.swift; sourceTree = "<group>"; };
-		5528FE5F21FDB47A00CB2C6E /* Doctor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Doctor.swift; sourceTree = "<group>"; };
-		5528FE6021FDB47A00CB2C6E /* Patient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
-		5528FE6121FDB47A00CB2C6E /* Prescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prescription.swift; sourceTree = "<group>"; };
-		5528FE6221FDB47A00CB2C6E /* Indications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indications.swift; sourceTree = "<group>"; };
+		5528FE5E21FDB47A00CB2C6E /* Medicine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Medicine.swift; path = Models/Medicine.swift; sourceTree = "<group>"; };
+		5528FE5F21FDB47A00CB2C6E /* Doctor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Doctor.swift; path = Models/Doctor.swift; sourceTree = "<group>"; };
+		5528FE6021FDB47A00CB2C6E /* Patient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Patient.swift; path = Models/Patient.swift; sourceTree = "<group>"; };
+		5528FE6121FDB47A00CB2C6E /* Prescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Prescription.swift; path = Models/Prescription.swift; sourceTree = "<group>"; };
+		5528FE6221FDB47A00CB2C6E /* Indications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Indications.swift; path = Models/Indications.swift; sourceTree = "<group>"; };
 		5528FE6421FDC08500CB2C6E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = beginnertableview/SignUpViewController.swift; sourceTree = SOURCE_ROOT; };
 		5528FE6621FDC49D00CB2C6E /* DoctorsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DoctorsTableViewCell.swift; path = beginnertableview/DoctorsTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		5528FE6821FDC67000CB2C6E /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CalendarViewController.swift; path = beginnertableview/CalendarViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -76,11 +81,6 @@
 		5528FE6321FDB47A00CB2C6E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5528FE5E21FDB47A00CB2C6E /* Medicine.swift */,
-				5528FE5F21FDB47A00CB2C6E /* Doctor.swift */,
-				5528FE6021FDB47A00CB2C6E /* Patient.swift */,
-				5528FE6121FDB47A00CB2C6E /* Prescription.swift */,
-				5528FE6221FDB47A00CB2C6E /* Indications.swift */,
 			);
 			name = Models;
 			path = /Users/felipe/Documents/NWHacks/NWHacks2019/iOS/BeginnerTableView/Models;
@@ -129,6 +129,11 @@
 				ED47EDA01ECF4D0E00F5FC0E /* AppDelegate.swift */,
 				ED47EDB21ECF4DD400F5FC0E /* VideoListScreen.swift */,
 				ED47EDB41ECF51B000F5FC0E /* VideoCell.swift */,
+				5528FE5E21FDB47A00CB2C6E /* Medicine.swift */,
+				5528FE5F21FDB47A00CB2C6E /* Doctor.swift */,
+				5528FE6021FDB47A00CB2C6E /* Patient.swift */,
+				5528FE6121FDB47A00CB2C6E /* Prescription.swift */,
+				5528FE6221FDB47A00CB2C6E /* Indications.swift */,
 				ED47EDB61ECF530000F5FC0E /* Video.swift */,
 				ED47EDA41ECF4D0E00F5FC0E /* Main.storyboard */,
 				ED47EDA71ECF4D0E00F5FC0E /* Assets.xcassets */,
@@ -275,12 +280,17 @@
 				5528FE6921FDC67000CB2C6E /* CalendarViewController.swift in Sources */,
 				ED47EDA11ECF4D0E00F5FC0E /* AppDelegate.swift in Sources */,
 				5528FE6B21FDE07800CB2C6E /* logoutViewController.swift in Sources */,
+				559F962A21FDF8E4004730E1 /* Indications.swift in Sources */,
 				ED47EDB71ECF530000F5FC0E /* Video.swift in Sources */,
 				5528FE6521FDC08500CB2C6E /* SignUpViewController.swift in Sources */,
 				5528FE6721FDC49D00CB2C6E /* DoctorsTableViewCell.swift in Sources */,
 				ED47EDB31ECF4DD400F5FC0E /* VideoListScreen.swift in Sources */,
+				559F962921FDF8E4004730E1 /* Prescription.swift in Sources */,
+				559F962821FDF8E4004730E1 /* Medicine.swift in Sources */,
 				ED47EDB51ECF51B000F5FC0E /* VideoCell.swift in Sources */,
+				559F962B21FDF8E4004730E1 /* Doctor.swift in Sources */,
 				5510CFC321FD6A3100D4F456 /* LandingViewController.swift in Sources */,
+				559F962C21FDF8E4004730E1 /* Patient.swift in Sources */,
 				55C484B021FDA88D00EE7D25 /* doctors.swift in Sources */,
 				5510CFC121FD619100D4F456 /* QRCodeViewController.swift in Sources */,
 			);

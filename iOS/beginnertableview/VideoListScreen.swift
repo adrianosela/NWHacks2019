@@ -7,17 +7,21 @@
 //
 
 import UIKit
+import Alamofire
 
 class VideoListScreen: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
     var videos: [Video] = []
-
+    private let baseURL = "http://slimjim.azurewebsites.net"
+    private let jsonDecoder = JSONDecoder()
+    private let jsonEncoder = JSONEncoder()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         videos = createArray()
+        getAllPrescription(userId: "ef04ca5b-def4-4dce-8b9c-bd3b487e2117")
     }
     
     
@@ -32,6 +36,33 @@ class VideoListScreen: UIViewController {
     
         return [video1, video2, video3, video4, video5, video6]
     }
+    
+    public func getAllPrescription(userId: String) {
+        let path = "/patient_prescriptions/"+userId
+        let parameters: [String: Any] = [
+            "id": userId
+        ]
+        
+        Alamofire.request(baseURL+path, method: .get, parameters: parameters).responseJSON {
+            response in
+            print(response)
+            if let json = response.data, let listPrescription = try? self.jsonDecoder.decode(ListPrescription.self, from: json) {
+                print(listPrescription)
+                Alamofire.request(self.self.baseURL+path, method: .get, parameters: parameters).responseJSON {
+                    response in
+                    print(response)
+                    if let json = response.data, let listPrescription = try? self.jsonDecoder.decode(ListPrescription.self, from: json) {
+                        print(listPrescription)
+                    } else {
+                        print(response.error ?? "Unknow Error")
+                    }
+                }
+            } else {
+                print(response.error ?? "Unknow Error")
+            }
+        }
+    }
+    
 }
 
 

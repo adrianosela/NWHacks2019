@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"net/http"
 
+	"github.com/adrianosela/NWHacks2019/api/src/objects/doctors"
 	"github.com/adrianosela/NWHacks2019/api/src/objects/patients"
 	"github.com/adrianosela/NWHacks2019/api/src/objects/prescriptions"
 	"github.com/adrianosela/NWHacks2019/api/src/store"
@@ -58,6 +59,21 @@ func (c *APIConfig) newPatientHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		// tie doctor associated with prescription to the user
 		patient.Doctors = []string{pres.Doctor}
+		// add patient to doctor's db
+		var dr *doctors.Doctor
+		dr, err = c.DB.GetDoctor(pres.Doctor)
+		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			w.Write([]byte(string(":("))) //FIXME
+			return
+		}
+		dr.Patients = append(dr.Patients, patient.ID)
+		if err = c.DB.UpdateDoctor(dr); err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			w.Write([]byte(string(":("))) //FIXME
+			return
+		}
+
 	}
 
 	if err = c.DB.PutPatient(patient); err != nil {

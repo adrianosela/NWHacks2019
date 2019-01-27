@@ -6,7 +6,7 @@ import (
 
 // Doctor represents a doctor
 type Doctor struct {
-	ID            string   `json:"doctor_id"`
+	ID            string   `json:"id"`
 	Name          string   `json:"name"`
 	Office        string   `json:"office"`
 	Specializaion string   `json:"specialization"`

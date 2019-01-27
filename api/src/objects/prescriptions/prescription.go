@@ -8,7 +8,7 @@ import (
 
 // Prescription represents a prescription from a doctor to a patient
 type Prescription struct {
-	ID        string                 `json:"rx_id"`
+	ID        string                 `json:"id"`
 	AddedAt   int64                  `json:"added_at"`
 	Medicines map[string]Indications `json:"medicines"` // map of medicine ID to indications
 	Remaining map[string]int         `json:"remaining"` // map of medicine to quantity left

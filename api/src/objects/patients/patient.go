@@ -6,7 +6,7 @@ import (
 
 // Patient represents patients in the system
 type Patient struct {
-	ID            string   `json:"patient_id"`
+	ID            string   `json:"id"`
 	Name          string   `json:"name"`
 	Email         string   `json:"email"`
 	Phone         string   `json:"phone"`

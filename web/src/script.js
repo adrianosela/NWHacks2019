@@ -1,6 +1,6 @@
 function session_start(){
-	sessionStorage.doctor_id = "";
-	sessionStorage.patient_id = "";
+	sessionStorage.doctor = "";
+	sessionStorage.patient = "";
 }
 
 function set_doctor(doctor){
@@ -17,12 +17,27 @@ function get_session(name){
 
 function createNode(element) {
       return document.createElement(element);
-  }
+}
 
 function append(parent, el) {
     return parent.appendChild(el);
-  }
-  
+}
+
+$( "#patients" )
+  .mouseover(function() {
+    //$( ".sick" ).animate( {top: "-55px;"} );
+    console.log("fuuuuck");
+  })
+  .mouseout(function() {
+    $( "p:first", this ).text( "mouse out" );
+  });
+
+
+function retreat(){
+		$(".sick").animate({top: '0px'});
+		console.log("hoooo");
+}
+	  
 function json_load(url){
 	  return new Promise((resolve, reject) => {
 		fetch(url)
@@ -43,16 +58,26 @@ function json_load(url){
 	  
 	  json_load(url).then( (resp) => {
 		return resp.results.map(function(patient) {
-		  let li = createNode('li'),
-			  img = createNode('img'),
-			  span = createNode('span');
+		  let img = createNode('img'),
+			  p = createNode('p'),
+			  a = createNode('a');
 			  //details = createNode('p');
-		  img.src = patient.picture.medium;
-		  span.innerHTML = `${patient.name.first} ${patient.name.last}`;
-		  //details.innerHTML = `${patient.name.first} ${patient.name.last}`;
-		  append(li, img);
-		  append(li, span);
-		  append(document.getElementById('authors'), li);
+		  //img.src = patient.picture.medium;
+		  img.src = '../../UI Icons/Web App/ICON_Female.png';
+		  img.style.height = "30px";
+		  img.style.float = "left";
+		  
+		  a.innerHTML = '<div class=\"d-flex w-100 justify-content-between"><h5 class="mb-1">' + `${patient.name.first} ${patient.name.last}` + '</h5><small>3 days ago</small></div><p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p><small>Donec id elit non mi porta.</small>' ;
+		  a.classList.add('list-group-item');
+		  a.classList.add('list-group-item-action');
+		  a.classList.add('flex-column');
+		  a.classList.add('align-items-start');
+		  a.setAttribute("id", "single-patient");
+		  a.href = "patient.html";
+		  //a.style.width = "70%";
+		  a.style.float = "left";
+		  
+		  append(document.getElementById('patients'), a);
 		});
 	  }
 	  

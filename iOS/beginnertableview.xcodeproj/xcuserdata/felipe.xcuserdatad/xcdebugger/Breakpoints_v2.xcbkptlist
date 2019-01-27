@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BeginnerTableView/VideoCell.swift"
+            timestampString = "570273060.1453201"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "VideoCell"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BeginnerTableView.VideoCell.videoImageView.getter : weak Swift.Optional&lt;__C.UIImageView&gt;"
+                  moduleName = "BeginnerTableView"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/felipe/Downloads/BeginnerTableView/BeginnerTableView/VideoCell.swift"
+                  timestampString = "570249569.0315551"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "86">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BeginnerTableView.VideoCell.videoImageView.setter : weak Swift.Optional&lt;__C.UIImageView&gt;"
+                  moduleName = "BeginnerTableView"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/felipe/Downloads/BeginnerTableView/BeginnerTableView/VideoCell.swift"
+                  timestampString = "570249569.03535"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "106">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BeginnerTableView.VideoCell.init(style: __C.UITableViewCellStyle, reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; BeginnerTableView.VideoCell"
+                  moduleName = "BeginnerTableView"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/felipe/Downloads/BeginnerTableView/BeginnerTableView/VideoCell.swift"
+                  timestampString = "570249569.037333"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "57">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BeginnerTableView.VideoCell.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;BeginnerTableView.VideoCell&gt;"
+                  moduleName = "BeginnerTableView"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/felipe/Downloads/BeginnerTableView/BeginnerTableView/VideoCell.swift"
+                  timestampString = "570249569.039189"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "50">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BeginnerTableView/VideoCell.swift"
+            timestampString = "570273060.145414"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "VideoCell"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BeginnerTableView.VideoCell.videoTitleLabel.getter : weak Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "BeginnerTableView"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/felipe/Downloads/BeginnerTableView/BeginnerTableView/VideoCell.swift"
+                  timestampString = "570249570.666617"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "86">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BeginnerTableView.VideoCell.videoTitleLabel.setter : weak Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "BeginnerTableView"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/felipe/Downloads/BeginnerTableView/BeginnerTableView/VideoCell.swift"
+                  timestampString = "570249570.669094"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "106">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BeginnerTableView.VideoCell.init(style: __C.UITableViewCellStyle, reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; BeginnerTableView.VideoCell"
+                  moduleName = "BeginnerTableView"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/felipe/Downloads/BeginnerTableView/BeginnerTableView/VideoCell.swift"
+                  timestampString = "570249570.6711251"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "171">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BeginnerTableView.VideoCell.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;BeginnerTableView.VideoCell&gt;"
+                  moduleName = "BeginnerTableView"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/felipe/Downloads/BeginnerTableView/BeginnerTableView/VideoCell.swift"
+                  timestampString = "570249570.672935"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "142">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

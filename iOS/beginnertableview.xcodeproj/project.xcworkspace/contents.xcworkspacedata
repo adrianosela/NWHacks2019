@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "group:/Users/felipe/Documents/NWHacks/NWHacks2019/iOS/BeginnerTableView/Models"
+      name = "Models">
+      <FileRef
+         location = "group:Medicine.swift">
+      </FileRef>
+      <FileRef
+         location = "group:Doctor.swift">
+      </FileRef>
+      <FileRef
+         location = "group:Patient.swift">
+      </FileRef>
+      <FileRef
+         location = "group:Prescription.swift">
+      </FileRef>
+      <FileRef
+         location = "group:Indications.swift">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:/Users/felipe/Documents/NWHacks/NWHacks2019/iOS/BeginnerTableView/Network"
+      name = "Network">
+      <FileRef
+         location = "group:NetworkController.swift">
+      </FileRef>
+   </Group>
+   <FileRef
+      location = "self:">
+   </FileRef>
+</Workspace>

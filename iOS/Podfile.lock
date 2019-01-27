@@ -8,20 +8,24 @@ PODS:
   - AppCenter/Core (1.13.0)
   - AppCenter/Crashes (1.13.0):
     - AppCenter/Core
+  - QRCodeReader.swift (10.0.0)
 
 DEPENDENCIES:
   - Alamofire
   - AppCenter
+  - QRCodeReader.swift (~> 10.0.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - AppCenter
+    - QRCodeReader.swift
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   AppCenter: a70408f15de23f925001bfc7b7473094a009a4eb
+  QRCodeReader.swift: 74d0378eb0c7807828552b49626bbc8307495aee
 
-PODFILE CHECKSUM: a6af007d2fb0745082d525ebe33b56f5c4869b08
+PODFILE CHECKSUM: e0ac3eb561ff366e7f7e9b69dc58fae47be7332b
 
 COCOAPODS: 1.5.3

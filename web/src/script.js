@@ -5,6 +5,54 @@ function session_start(){
 	sessionStorage.patient = JSON.stringify(bs);;
 }
 
+function create_rx() {
+	
+	var indications = JSON.stringify({
+      "dpw": document.getElementById("dpw").value,
+      "tpd": document.getElementById("tpd").value,
+      "tod": [56,54]
+    });
+	
+	var jsonVariable3 = {};
+	
+	var jsonVariable2 = {};
+	jsonVariable2['daysperweek'] = document.getElementById("dpw").value;
+	jsonVariable2['timesperday'] = document.getElementById("tpd").value;
+	jsonVariable2['time'] = [56,54];
+	
+	jsonVariable3[document.getElementById("medication").value] = jsonVariable2;
+	
+	var jsonVariable = {};
+	jsonVariable[document.getElementById("medication").value] = document.getElementById("quantity").value;
+	
+	var info = JSON.stringify({
+      "medicines": jsonVariable3,
+      "remaining": jsonVariable,
+      "doctor": "cc7f1487-555c-46af-87dd-6c57f467406c"
+	});
+	
+	var pre_id = "";
+	
+	xhr = new XMLHttpRequest();
+		var url = "http://ezpillzz.azurewebsites.net/prescription";
+		xhr.open("POST", url, true);
+		xhr.setRequestHeader("Content-type", "application/json");
+		xhr.onreadystatechange = function () { 
+			if (xhr.readyState == 4 && xhr.status == 200) {
+				pre_id = xhr.responseText;
+				var json = JSON.parse(xhr.responseText);
+				console.log(pre_id.substr(7,36));
+			}
+		}
+		xhr.send(info);
+		
+		var qrcode = new QRCode("qrcode");
+			
+			qrcode.makeCode(pre_id.substr(7,36));
+			console.log(elText);
+
+}
+
 function set_doctor(doctor){
 	sessionStorage.doctor_id = doctor;
 }
@@ -55,7 +103,7 @@ function json_load(url){
  async function doctor_load(){
 	  
 	  //const url = 'https://randomuser.me/api/?results=10';
-	  const url = 'http://applepen.azurewebsites.net/doctor/cc7f1487-555c-46af-87dd-6c57f467406c';
+	  const url = 'http://ezpillzz.azurewebsites.net/doctor/cc7f1487-555c-46af-87dd-6c57f467406c';
 	  
 	  json_load(url).then( (resp) => {
 		return resp.patients.map(function(patient) {
@@ -77,7 +125,7 @@ function json_load(url){
 	  while(resp['patients'].length > y){
 		  //console.log(resp['patients'].length);
 		  
-		  const url = 'http://applepen.azurewebsites.net/patient/' + resp['patients'][y];
+		  const url = 'http://ezpillzz.azurewebsites.net/patient/' + resp['patients'][y];
 		  console.log(url);
 
 	  json_load(url).then( (resp) => {
@@ -85,10 +133,10 @@ function json_load(url){
 		  ///////////////////////////////////////
 		  for (var key in resp['prescriptions']) {
 			  //console.log(resp['prescriptions'][key]);
-			json_load('http://applepen.azurewebsites.net/prescription/' + resp['prescriptions'][key]).then( (prescription) => {
+			json_load('http://ezpillzz.azurewebsites.net/prescription/' + resp['prescriptions'][key]).then( (prescription) => {
 			
 			
-				console.log('http://applepen.azurewebsites.net/prescription/' + key);
+				console.log('http://ezpillzz.azurewebsites.net/prescription/' + key);
 				console.log(prescription);
 				prescription_load(prescription, resp.name);
 			});	

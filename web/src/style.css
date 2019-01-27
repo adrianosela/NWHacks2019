@@ -30,15 +30,6 @@
 	height: calc(100% - 55px);
 }
 
-.form-control, input[type="text"]{
-	border-left: none;
-	border-right: none;
-	border-top: none;
-	color: white;
-	border-color: white;
-	border-radius: 0px;
-}
-
 .form-control input[type=text]:focus:not([readonly]) {
 border-bottom: 1px solid #f48fb1;
 box-shadow: 0 1px 0 0 #f48fb1;

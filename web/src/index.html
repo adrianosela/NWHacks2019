@@ -9,9 +9,11 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 		<link rel="stylesheet" href="style.css">
+		<script type="text/javascript" src="qr/qrcode.js"></script>
 		<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+		
 		
 		<script src="script.js"></script>
 		<script>
@@ -74,17 +76,51 @@
 		  <div class="modal-dialog" role="document">
 			<div class="modal-content">
 			  <div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+				<img src="..\..\UI Icons\iOS App\pill_green.png" style="height: 40px;"/> &nbsp
+				<h4 class="modal-title" id="exampleModalLabel">Prescription Creator</h4>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				  <span aria-hidden="true">&times;</span>
 				</button>
 			  </div>
 			  <div class="modal-body">
-				...
+			  
+				<div class="input-group mb-3">
+				  <div class="input-group-prepend">
+					<span class="input-group-text" id="basic-addon1 medication">Medication</span>
+				  </div>
+				  <input type="text" class="form-control" placeholder="Drug" aria-label="Username" aria-describedby="basic-addon1" id="medication">
+				</div>
+				<div class="input-group mb-3">
+				  <div class="input-group-prepend">
+					<span class="input-group-text" id="basic-addon1 dosage">Dosage</span>
+				  </div>
+				  <input type="text" class="form-control" placeholder="ie. 50 (in mg)" aria-label="Username" aria-describedby="basic-addon1" id="dosage">
+				</div>
+				<div class="input-group mb-3">
+				  <div class="input-group-prepend">
+					<span class="input-group-text" id="basic-addon1 quantity">Quantity</span>
+				  </div>
+				  <input type="text" class="form-control" placeholder="Number of Pills" aria-label="Username" aria-describedby="basic-addon1" id="quantity">
+				</div>
+				<div class="input-group mb-3">
+				  <div class="input-group-prepend">
+					<span class="input-group-text" id="basic-addon1 dpw">Days per Week</span>
+				  </div>
+				  <input type="text" class="form-control" placeholder="# of Days a Week" aria-label="Username" aria-describedby="basic-addon1" id="dpw">
+				</div>
+				<div class="input-group mb-3">
+				  <div class="input-group-prepend">
+					<span class="input-group-text" id="basic-addon1">Times per Day</span>
+				  </div>
+				  <input type="text" class="form-control" placeholder="Number of times a day" aria-label="Username" aria-describedby="basic-addon1" id="tpd">
+				</div>
+				
+				<div id="qrcode"></div>
+				
 			  </div>
 			  <div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save changes</button>
+				<button type="button" class="btn btn-primary" onclick="create_rx()">Create</button>
 			  </div>
 			</div>
 		  </div>
@@ -112,12 +148,6 @@
 			console.log("fuuuuck");
 		  });
 		  
-		  $( ".list-group-item" )
-		  .one("click", function() {
-		  console.log("hit!");
-			set_session('patient_id', $(event.target.id));
-			window.location.replace("patients.html");
-		  });
 		
 		</script>
 		

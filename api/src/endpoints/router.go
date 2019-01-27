@@ -1,7 +1,9 @@
 package endpoints
 
 import (
+	"fmt"
 	"net/http"
+	"time"
 
 	"github.com/adrianosela/NWHacks2019/api/src/store"
 	"github.com/gorilla/mux"
@@ -27,6 +29,12 @@ func GetHandlers(c APIConfig) *mux.Router {
 	// prescriptions
 	router.Methods(http.MethodPost).Path("/prescription").HandlerFunc(c.newPrescriptionHandler)
 	router.Methods(http.MethodGet).Path("/prescription/{id}").HandlerFunc(c.getPrescriptionHandler)
+
+	// test endpoint
+	router.Methods(http.MethodGet).Path("/prescription/{id}").HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte(fmt.Sprintf("running! it is right now %s", time.Now().String())))
+	})
 
 	return router
 }

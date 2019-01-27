@@ -1,0 +1,30 @@
+.navbar {
+    background-color: #33B099;
+    border-color: #33B099;
+	color: white;
+}
+
+.side-nav{
+	position: fixed;
+	background-color: #33B099;
+	width: 20%;
+	height: 100%;
+}
+
+.form-control, input[type="text"]{
+	border-left: none;
+	border-right: none;
+	border-top: none;
+	color: white;
+	border-radius: 0px;
+}
+
+.form-control input[type=text]:focus:not([readonly]) {
+border-bottom: 1px solid #f48fb1;
+box-shadow: 0 1px 0 0 #f48fb1;
+}
+
+.new-patient {
+	width: 80%;
+	margin: auto;
+}

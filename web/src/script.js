@@ -43,19 +43,24 @@ function json_load(url){
 	  
 	  json_load(url).then( (resp) => {
 		return resp.results.map(function(patient) {
-		  let li = createNode('li'),
+		  let img = createNode('img'),
 			  p = createNode('p'),
 			  a = createNode('a');
 			  //details = createNode('p');
 		  //img.src = patient.picture.medium;
-		  a.innerHTML = '<h4>' + `${patient.name.first} ${patient.name.last}` + '</h4>';
+		  img.src = '../../UI Icons/Web App/ICON_Female.png';
+		  img.style.height = "30px";
+		  img.style.float = "left";
+		  
+		  a.innerHTML = '<div class=\"d-flex w-100 justify-content-between"><h5 class="mb-1">' + `${patient.name.first} ${patient.name.last}` + '</h5><small>3 days ago</small></div><p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p><small>Donec id elit non mi porta.</small>' ;
 		  a.classList.add('list-group-item');
 		  a.classList.add('list-group-item-action');
+		  a.classList.add('flex-column');
+		  a.classList.add('align-items-start');
 		  a.href = "patient.html";
-		  p.innerHTML = `${patient.location.street} ${patient.location.city}`;
-		  //details.innerHTML = `${patient.name.first} ${patient.name.last}`;
-		  //append(li, img);
-		  append(a, p);
+		  //a.style.width = "70%";
+		  a.style.float = "left";
+		  
 		  append(document.getElementById('patients'), a);
 		});
 	  }

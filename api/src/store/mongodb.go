@@ -99,17 +99,17 @@ func (db *MongoDB) PutPrescription(rx *prescriptions.Prescription) error {
 
 // UpdateDoctor updates a doctor in the db
 func (db *MongoDB) UpdateDoctor(dr *doctors.Doctor) error {
-	return db.DoctorsTable.Update(bson.M{"id": dr}, dr)
+	return db.DoctorsTable.Update(bson.M{"id": dr.ID}, dr)
 }
 
 // UpdatePatient updates a doctor in the db
 func (db *MongoDB) UpdatePatient(pt *patients.Patient) error {
-	return db.PatientsTable.Update(bson.M{"id": pt}, pt)
+	return db.PatientsTable.Update(bson.M{"id": pt.ID}, pt)
 }
 
 // UpdatePrescription updates a prescription in the db
 func (db *MongoDB) UpdatePrescription(pr *prescriptions.Prescription) error {
-	return db.PrescriptionsTable.Update(bson.M{"id": pr}, pr)
+	return db.PrescriptionsTable.Update(bson.M{"id": pr.ID}, pr)
 }
 
 // GetDoctor gets a doctor from the db

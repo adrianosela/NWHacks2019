@@ -4,6 +4,8 @@ import (
 	"github.com/satori/go.uuid"
 )
 
+var defaultImage = "https://nwhacksstorage.blob.core.windows.net/doctors/noimg.png"
+
 // Doctor represents a doctor
 type Doctor struct {
 	ID            string   `json:"id"`
@@ -26,13 +28,17 @@ type NewDoctorConfig struct {
 
 // NewDoctor is the constructor for the Doctor object
 func NewDoctor(config NewDoctorConfig) *Doctor {
-	return &Doctor{
+	d := &Doctor{
 		ID:            uuid.NewV4().String(),
 		Name:          config.Name,
 		Office:        config.Office,
 		OfficePhone:   config.OfficePhone,
 		Specializaion: config.Specialization,
-		PhotoURL:      config.PhotoURL,
+		PhotoURL:      defaultImage,
 		Patients:      []string{},
 	}
+	if config.PhotoURL != "" {
+		d.PhotoURL = config.PhotoURL
+	}
+	return d
 }

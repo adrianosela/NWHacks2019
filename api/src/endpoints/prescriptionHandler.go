@@ -151,6 +151,7 @@ func (c *APIConfig) claimPrescriptionHandler(w http.ResponseWriter, r *http.Requ
 		}
 	}
 	pt.Prescriptions = append(pt.Prescriptions, claimRxReq.PrescriptionID)
+	pt.Doctors = append(pt.Doctors, p.Doctor)
 
 	if err = c.DB.UpdatePatient(pt); err != nil {
 		w.WriteHeader(http.StatusInternalServerError)

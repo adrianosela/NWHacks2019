@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# THIS SCRIPT IS RAN TO POPULATE THE DB - ENOUGH FOR A DEMO
+
 HOST="http://ezpills.azurewebsites.net"
 
 # create 5 doctors

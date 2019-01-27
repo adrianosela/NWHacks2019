@@ -12,18 +12,19 @@ import UIKit
 struct Prescription: Codable {
     var ID: String
     var AddedAt: Int
-    var Medicines: String
+    var Medicines: [String:Indications]
     var Remaining: String
     var Claimed: Bool
     var Patient: String
-    var URL: String
+    var Doctor: String
     private enum CodingKeys: String, CodingKey {
-        case ID = "rx_id"
-        case AddedAt = "dosage"
-        case Medicines = "meds"
+        case ID = "id"
+        case AddedAt = "added_at"
+        case Medicines = "medicines"
         case Remaining = "remaining"
         case Claimed = "claimed"
         case Patient = "patient"
-        case URL = "url"
+        case Doctor = "doctor"
     }
 }
+

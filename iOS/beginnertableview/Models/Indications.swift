@@ -11,11 +11,11 @@ import Foundation
 struct Indications: Codable {
     var DaysPerWeek: Int
     var TimesPerDay: Int
-    var Time: [String]
+    var Time: [Int]
     
     private enum CodingKeys: String, CodingKey {
-        case DaysPerWeek = "days_per_week"
-        case TimesPerDay = "times_per_day"
-        case Time = "times_of_day"
+        case DaysPerWeek = "dpw"
+        case TimesPerDay = "tpd"
+        case Time = "tod"
     }
 }

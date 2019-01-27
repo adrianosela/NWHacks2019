@@ -44,8 +44,8 @@ extension Doctors: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let video = videos[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "VideoCell") as! VideoCell
-        cell.setVideo(video: video)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DoctorCell") as! DoctorCell
+        cell.setPrescription(video: video)
         
         return cell
     }

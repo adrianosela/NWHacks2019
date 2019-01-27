@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		5510CFC121FD619100D4F456 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5510CFC021FD619100D4F456 /* QRCodeViewController.swift */; };
 		5510CFC321FD6A3100D4F456 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5510CFC221FD6A3100D4F456 /* LandingViewController.swift */; };
+		5528FE6521FDC08500CB2C6E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528FE6421FDC08500CB2C6E /* SignUpViewController.swift */; };
+		5528FE6721FDC49D00CB2C6E /* DoctorsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528FE6621FDC49D00CB2C6E /* DoctorsTableViewCell.swift */; };
+		5528FE6921FDC67000CB2C6E /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528FE6821FDC67000CB2C6E /* CalendarViewController.swift */; };
+		5528FE6B21FDE07800CB2C6E /* logoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528FE6A21FDE07800CB2C6E /* logoutViewController.swift */; };
 		55C484B021FDA88D00EE7D25 /* doctors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C484AF21FDA88D00EE7D25 /* doctors.swift */; };
 		A363EB5BE0AB9D334206046D /* Pods_BeginnerTableView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A780CD25797EF8EA6003881 /* Pods_BeginnerTableView.framework */; };
 		ED47EDA11ECF4D0E00F5FC0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED47EDA01ECF4D0E00F5FC0E /* AppDelegate.swift */; };
@@ -25,12 +29,16 @@
 		3825B649A07237DA99A4D8B7 /* Pods-BeginnerTableView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeginnerTableView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeginnerTableView/Pods-BeginnerTableView.debug.xcconfig"; sourceTree = "<group>"; };
 		5510CFC021FD619100D4F456 /* QRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QRCodeViewController.swift; path = beginnertableview/QRCodeViewController.swift; sourceTree = SOURCE_ROOT; };
 		5510CFC221FD6A3100D4F456 /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LandingViewController.swift; path = beginnertableview/LandingViewController.swift; sourceTree = SOURCE_ROOT; };
-		5528FE5C21FDB47900CB2C6E /* NetworkController.swift */ = {isa = PBXFileReference; path = NetworkController.swift; sourceTree = "<group>"; };
-		5528FE5E21FDB47A00CB2C6E /* Medicine.swift */ = {isa = PBXFileReference; path = Medicine.swift; sourceTree = "<group>"; };
-		5528FE5F21FDB47A00CB2C6E /* Doctor.swift */ = {isa = PBXFileReference; path = Doctor.swift; sourceTree = "<group>"; };
-		5528FE6021FDB47A00CB2C6E /* Patient.swift */ = {isa = PBXFileReference; path = Patient.swift; sourceTree = "<group>"; };
-		5528FE6121FDB47A00CB2C6E /* Prescription.swift */ = {isa = PBXFileReference; path = Prescription.swift; sourceTree = "<group>"; };
-		5528FE6221FDB47A00CB2C6E /* Indications.swift */ = {isa = PBXFileReference; path = Indications.swift; sourceTree = "<group>"; };
+		5528FE5C21FDB47900CB2C6E /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		5528FE5E21FDB47A00CB2C6E /* Medicine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Medicine.swift; sourceTree = "<group>"; };
+		5528FE5F21FDB47A00CB2C6E /* Doctor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Doctor.swift; sourceTree = "<group>"; };
+		5528FE6021FDB47A00CB2C6E /* Patient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
+		5528FE6121FDB47A00CB2C6E /* Prescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prescription.swift; sourceTree = "<group>"; };
+		5528FE6221FDB47A00CB2C6E /* Indications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indications.swift; sourceTree = "<group>"; };
+		5528FE6421FDC08500CB2C6E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = beginnertableview/SignUpViewController.swift; sourceTree = SOURCE_ROOT; };
+		5528FE6621FDC49D00CB2C6E /* DoctorsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DoctorsTableViewCell.swift; path = beginnertableview/DoctorsTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		5528FE6821FDC67000CB2C6E /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CalendarViewController.swift; path = beginnertableview/CalendarViewController.swift; sourceTree = SOURCE_ROOT; };
+		5528FE6A21FDE07800CB2C6E /* logoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = logoutViewController.swift; path = beginnertableview/logoutViewController.swift; sourceTree = SOURCE_ROOT; };
 		55C484AF21FDA88D00EE7D25 /* doctors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = doctors.swift; path = beginnertableview/doctors.swift; sourceTree = SOURCE_ROOT; };
 		89B18B4EFAFC6D4D1454B05A /* Pods-BeginnerTableView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeginnerTableView.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeginnerTableView/Pods-BeginnerTableView.release.xcconfig"; sourceTree = "<group>"; };
 		ED47ED9D1ECF4D0E00F5FC0E /* BeginnerTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeginnerTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +137,10 @@
 				5510CFC021FD619100D4F456 /* QRCodeViewController.swift */,
 				5510CFC221FD6A3100D4F456 /* LandingViewController.swift */,
 				55C484AF21FDA88D00EE7D25 /* doctors.swift */,
+				5528FE6421FDC08500CB2C6E /* SignUpViewController.swift */,
+				5528FE6621FDC49D00CB2C6E /* DoctorsTableViewCell.swift */,
+				5528FE6821FDC67000CB2C6E /* CalendarViewController.swift */,
+				5528FE6A21FDE07800CB2C6E /* logoutViewController.swift */,
 			);
 			path = BeginnerTableView;
 			sourceTree = "<group>";
@@ -215,6 +227,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-BeginnerTableView/Pods-BeginnerTableView-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/QRCodeReader.swift/QRCodeReader.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -222,6 +235,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QRCodeReader.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,8 +272,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5528FE6921FDC67000CB2C6E /* CalendarViewController.swift in Sources */,
 				ED47EDA11ECF4D0E00F5FC0E /* AppDelegate.swift in Sources */,
+				5528FE6B21FDE07800CB2C6E /* logoutViewController.swift in Sources */,
 				ED47EDB71ECF530000F5FC0E /* Video.swift in Sources */,
+				5528FE6521FDC08500CB2C6E /* SignUpViewController.swift in Sources */,
+				5528FE6721FDC49D00CB2C6E /* DoctorsTableViewCell.swift in Sources */,
 				ED47EDB31ECF4DD400F5FC0E /* VideoListScreen.swift in Sources */,
 				ED47EDB51ECF51B000F5FC0E /* VideoCell.swift in Sources */,
 				5510CFC321FD6A3100D4F456 /* LandingViewController.swift in Sources */,

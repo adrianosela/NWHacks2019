@@ -1,13 +1,12 @@
 package patients
 
 import (
-	"github.com/adrianosela/NWHacks2019/api/src/objects/prescriptions"
 	uuid "github.com/satori/go.uuid"
 )
 
 // Patient represents patients in the system
 type Patient struct {
-	ID            string   `json:"patient_id"`
+	ID            string   `json:"id"`
 	Name          string   `json:"name"`
 	Email         string   `json:"email"`
 	Phone         string   `json:"phone"`
@@ -26,32 +25,12 @@ type NewPatientConfig struct {
 // NewPatient is the constructor for the Patient object
 // this constructor is used for the regular user sign up flow
 // whether new user is joining with a prescription or not
-func NewPatient(config NewPatientConfig) (*Patient, error) {
-	np := &Patient{
-		ID:    uuid.NewV4().String(), // FIXME: check unique
-		Name:  config.Name,
-		Email: config.Email,
-		Phone: config.Phone,
-	}
-	// if config contains a prescription, link it and the doctor to the new
-	// patient's account
-	if config.NewPrescriptionID != "" {
-		pres, err := prescriptions.GetPrescription(config.NewPrescriptionID)
-		if err != nil {
-			return nil, err
-		}
-		np.Prescriptions = []string{config.NewPrescriptionID}
-		np.Doctors = []string{pres.Doctor}
-		// FIXME: CLAIM PRESCRIPTION FOR PATIENT
-	}
-	// FIXME: STORE PATIENT IN DB
-	return np, nil
-}
-
-// GetPatient returns a patient given the patient ID
-func GetPatient(id string) (*Patient, error) {
-	// FIXME: GET PATIENT FROM DB
+func NewPatient(config NewPatientConfig) *Patient {
 	return &Patient{
-		ID: id,
-	}, nil
+		ID:            uuid.NewV4().String(),
+		Name:          config.Name,
+		Email:         config.Email,
+		Phone:         config.Phone,
+		Prescriptions: []string{config.NewPrescriptionID},
+	}
 }

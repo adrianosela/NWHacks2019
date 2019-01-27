@@ -2,10 +2,12 @@ package endpoints
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 
 	"github.com/adrianosela/NWHacks2019/api/src/objects/prescriptions"
+	"github.com/adrianosela/NWHacks2019/api/src/store"
 	"github.com/gorilla/mux"
 )
 
@@ -27,6 +29,18 @@ func (c *APIConfig) newPrescriptionHandler(w http.ResponseWriter, r *http.Reques
 	}
 	// create new prescription object
 	p := prescriptions.NewPrescription(rxReq)
+	if err = c.DB.PutPrescription(p); err != nil {
+		switch err {
+		case store.ErrItemExists:
+			w.WriteHeader(http.StatusInternalServerError)
+			w.Write([]byte("UUID Collition occured"))
+			return
+		default:
+			w.WriteHeader(http.StatusInternalServerError)
+			w.Write([]byte(string(":(")))
+			return
+		}
+	}
 	// marshal response payload
 	respBytes, err := json.Marshal(p)
 	if err != nil {
@@ -49,12 +63,12 @@ func (c *APIConfig) getPrescriptionHandler(w http.ResponseWriter, r *http.Reques
 		return
 	}
 	// get prescription from store
-	p, err := prescriptions.GetPrescription(id)
+	p, err := c.DB.GetPrescription(id)
 	if err != nil {
 		switch err {
-		case prescriptions.ErrPrescriptionDoesNotExist:
+		case store.ErrNotInStore:
 			w.WriteHeader(http.StatusNotFound)
-			w.Write([]byte(err.Error()))
+			w.Write([]byte(fmt.Sprintf("prescription %s not found", id)))
 			return
 		default:
 			w.WriteHeader(http.StatusInternalServerError)

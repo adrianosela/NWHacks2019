@@ -12,7 +12,7 @@ import (
 )
 
 func (c *APIConfig) newDoctorHandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Origin", "*")
+	r.Response.Header.Set("Access-Control-Allow-Origin", "*")
 
 	// read req body
 	bodyBytes, err := ioutil.ReadAll(r.Body)
@@ -57,7 +57,7 @@ func (c *APIConfig) newDoctorHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func (c *APIConfig) getDoctorHandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Origin", "*")
+	r.Response.Header.Set("Access-Control-Allow-Origin", "*")
 
 	// get ID from URL params
 	getParams := mux.Vars(r)

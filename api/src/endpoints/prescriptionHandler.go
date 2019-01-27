@@ -12,7 +12,7 @@ import (
 )
 
 func (c *APIConfig) newPrescriptionHandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Origin", "*")
+	r.Response.Header.Set("Access-Control-Allow-Origin", "*")
 
 	// read req body
 	bodyBytes, err := ioutil.ReadAll(r.Body)
@@ -56,7 +56,7 @@ func (c *APIConfig) newPrescriptionHandler(w http.ResponseWriter, r *http.Reques
 }
 
 func (c *APIConfig) getPrescriptionHandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Origin", "*")
+	r.Response.Header.Set("Access-Control-Allow-Origin", "*")
 
 	// get prescription id from URL
 	getParams := mux.Vars(r)
@@ -93,7 +93,7 @@ func (c *APIConfig) getPrescriptionHandler(w http.ResponseWriter, r *http.Reques
 }
 
 func (c *APIConfig) claimPrescriptionHandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Origin", "*")
+	r.Response.Header.Set("Access-Control-Allow-Origin", "*")
 
 	// read req body
 	bodyBytes, err := ioutil.ReadAll(r.Body)

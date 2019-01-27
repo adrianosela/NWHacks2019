@@ -14,8 +14,7 @@ import (
 )
 
 func (c *APIConfig) newPatientHandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-
+	r.Response.Header.Set("Access-Control-Allow-Origin", "*")
 	// read req body
 	bodyBytes, err := ioutil.ReadAll(r.Body)
 	defer r.Body.Close()
@@ -97,14 +96,14 @@ func (c *APIConfig) newPatientHandler(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte(string("could not marshall response")))
 		return
 	}
+
 	w.WriteHeader(http.StatusOK)
 	w.Write(respBytes)
 	return
 }
 
 func (c *APIConfig) getPatientHandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-
+	r.Response.Header.Set("Access-Control-Allow-Origin", "*")
 	// get ID from URL params
 	getParams := mux.Vars(r)
 	id, ok := getParams["id"]

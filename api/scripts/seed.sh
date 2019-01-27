@@ -1,6 +1,6 @@
 #!/bin/bash
 
-HOST="http://lapapaya.azurewebsites.net"
+HOST="http://ezpills.azurewebsites.net"
 
 # create 5 doctors
 dr_id_1=$(echo '{"name": "Felipe Ballesteros Md.","office": "2265 West 16th Avenue, Vancouver BC, V6R4F9","specialization": "cardiology"}' | http POST ${HOST}/doctor | jq -r .id)

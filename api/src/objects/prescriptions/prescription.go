@@ -25,6 +25,12 @@ type NewPrescriptionConfig struct {
 	Doctor    string                 `json:"doctor"`
 }
 
+// ClaimPrescriptionConfig represents all the necessary info to claim an unclaimed prescription
+type ClaimPrescriptionConfig struct {
+	PatientID      string `json:"patient_id"`
+	PrescriptionID string `json:"prescription_id"`
+}
+
 // NewPrescription adds a new prescription to the system
 func NewPrescription(config NewPrescriptionConfig) *Prescription {
 	p := &Prescription{

@@ -38,7 +38,7 @@ func (c *APIConfig) newPrescriptionHandler(w http.ResponseWriter, r *http.Reques
 			return
 		default:
 			w.WriteHeader(http.StatusInternalServerError)
-			w.Write([]byte(string(":(")))
+			w.Write([]byte(err.Error()))
 			return
 		}
 	}
@@ -73,7 +73,7 @@ func (c *APIConfig) getPrescriptionHandler(w http.ResponseWriter, r *http.Reques
 			return
 		default:
 			w.WriteHeader(http.StatusInternalServerError)
-			w.Write([]byte(string(":(")))
+			w.Write([]byte(err.Error()))
 			return
 		}
 	}

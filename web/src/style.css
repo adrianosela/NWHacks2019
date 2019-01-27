@@ -17,13 +17,17 @@
 	position:relative;
 }
 
+.list-group-flush > li {
+	color:white;
+}
+
 .side-nav{
 	position: fixed;
 	background-color: #33B099;
 	width: 20%;
-	top: 65px;
+	top: 55px;
 	left: 0%;
-	height: calc(100% - 65px);
+	height: calc(100% - 55px);
 }
 
 .form-control, input[type="text"]{
@@ -45,13 +49,19 @@ box-shadow: 0 1px 0 0 #f48fb1;
 	margin: auto;
 }
 
+.list-group-flush {
+	
+	width: 100%;
+	
+}
+
 .list-group-flush > .list-group-item, li {
-	color: #696969;
+	color: white;
 	background-color: #33B099;
 	border-color: white;
-	margin-left: 10px;
+	margin-left: 50px;
 	margin-right: 10px;
-	padding: 5px;
+	padding: 0px;
 	padding-left: 10px;
 	border-top: none;
 }

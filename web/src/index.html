@@ -16,14 +16,27 @@
 		<script src="script.js"></script>
 		<script>
 		session_start();
-		patient_load();
+		setTimeout(
+			  function() 
+			  {
+					doctor_load();
+					setTimeout(
+			  function() 
+			  {
+				patient_load();//do something special
+			  }, 500);//do something special
+		}, 100);
+			  
+		
+		
+		
 		</script>
 		
 	</head>
 
 	<body>
 	<div style="background-color: #055883;" class="sick">
-		<img src="..\..\UI Icons\LOGO_EZPILL.png" style="height: 65px; position: relative;" class="navbar-brand"/>
+		<img src="..\..\UI Icons\LOGO_EZPILL.png" style="height: 55px; position: relative;" class="navbar-brand"/>
 	</div>
 		
 	<nav class="navbar navbar-expand fixed-top navbar-light">
@@ -49,13 +62,41 @@
 			
 			
 			<h4 style="color: white; margin-left: 5px; position: relative;" id="breakdown">Breakdown</h4>
-			<ul class="list-group list-group-flush">
-			  <li class="list-group-item">Cras justo odio</li>
-			  <li class="list-group-item">Dapibus ac facilisis in</li>
-			  <li class="list-group-item">Morbi leo risus</li>
-			  <li class="list-group-item">Porta ac consectetur ac</li>
-			  <li class="list-group-item">Vestibulum at eros</li>
-			</ul>
+			
+			<div id="infoo" style="position:relative; left: -100%;">
+				<!--
+					<div>
+						<img src="..\..\UI Icons\Web App\pill_white.png" style="float:left; height: 30px;margin-left: 10px;"/>
+						<h5 style="float:left;color:white;">&nbsp Prescription 1</h5>
+					</div>
+					
+				
+
+				<ul class="list-group list-group-flush">
+					  <li class="list-group-item">Cras justo odio<span class="badge badge-secondary">New</span></li>
+					  <li class="list-group-item">Dapibus ac facilisis in</li>
+					  <li class="list-group-item">Morbi leo risus</li>
+					  <li class="list-group-item">Porta ac consectetur ac</li>
+					  <li class="list-group-item">Vestibulum at eros</li>
+				</ul>
+				
+				<div>
+					<div>
+						<img src="..\..\UI Icons\Web App\pill_white.png" style="float:left; height: 30px;margin-left: 10px;"/>
+						<h5 style="float:left;color:white;">&nbsp Prescription 1</h5>
+					</div>
+					
+				</div>
+
+				<ul class="list-group list-group-flush"">
+					  <li class="list-group-item">Cras justo odio<span class="badge badge-secondary">New</span></li>
+					  <li class="list-group-item">Dapibus ac facilisis in</li>
+					  <li class="list-group-item">Morbi leo risus</li>
+					  <li class="list-group-item">Porta ac consectetur ac</li>
+					  <li class="list-group-item">Vestibulum at eros</li>
+				</ul>
+				-->
+			</div>
 			
 		</div>
 		
@@ -72,7 +113,8 @@
 		
 		$( "#patients" )
 		  .one("mouseover", "a", function() {
-			$( ".sick" ).animate( {top: "-65px"} ,{duration:1000, easing: 'swing'});
+			$( ".sick" ).animate( {top: "-55px"} ,{duration:1000, easing: 'swing'});
+			$( "#infoo" ).animate( {left: "0"} ,{duration:1000, easing: 'swing'});
 			$( "#breakdown" ).animate( {top: "-40px"} ,{duration:1000, easing: 'swing'});
 			$( "#breakdown" ).css( 'color', '#33B099' );
 			//$( "#breakdown" ).animate( {color: "white"} );

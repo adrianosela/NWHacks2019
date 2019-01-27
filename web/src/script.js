@@ -1,6 +1,8 @@
 function session_start(){
+	sessionStorage.doctor_id = "";
+	var bs = {patients: []};
 	sessionStorage.doctor = "";
-	sessionStorage.patient = "";
+	sessionStorage.patient = JSON.stringify(bs);;
 }
 
 function set_doctor(doctor){
@@ -11,7 +13,16 @@ function set_session(name, values){
 	sessionStorage.setItem(name, values);
 }
 
+function append_patients(values){
+	var data = values;
+	data2 = JSON.parse(sessionStorage.getItem('patient'));
+	data2['patients'].push(data);
+	console.log(data2);
+	sessionStorage.setItem('patient', JSON.stringify(data2));
+}
+
 function get_session(name){
+	console.log(JSON.parse(sessionStorage.getItem('patient')));
 	return sessionStorage.getItem(name);
 }
 
@@ -22,16 +33,6 @@ function createNode(element) {
 function append(parent, el) {
     return parent.appendChild(el);
 }
-
-$( "#patients" )
-  .mouseover(function() {
-    //$( ".sick" ).animate( {top: "-55px;"} );
-    console.log("fuuuuck");
-  })
-  .mouseout(function() {
-    $( "p:first", this ).text( "mouse out" );
-  });
-
 
 function retreat(){
 		$(".sick").animate({top: '0px'});
@@ -50,14 +51,46 @@ function json_load(url){
 		});  
 	  })
   }
-
-  async function patient_load(){
+  
+ async function doctor_load(){
 	  
-	  const ul = document.getElementById('authors');
-	  const url = 'https://randomuser.me/api/?results=10';
+	  //const url = 'https://randomuser.me/api/?results=10';
+	  const url = 'http://slimjim.azurewebsites.net/doctor/9c0a6dab-287a-421a-84fd-cbe404021af8';
 	  
 	  json_load(url).then( (resp) => {
-		return resp.results.map(function(patient) {
+		return resp.patients.map(function(patient) {
+			console.log(patient);
+			append_patients(patient);
+		});
+	  }
+	  
+	  )
+  }
+
+ async function patient_load(){
+	  
+	  //const url = 'https://randomuser.me/api/?results=10';
+	  
+	  
+	  const resp = JSON.parse(get_session("patient"));
+	  y=0;
+	  while(resp['patients'].length > y){
+		  //console.log(resp['patients'].length);
+		  
+		  const url = 'http://slimjim.azurewebsites.net/patient/' + resp['patients'][y];
+		  console.log(url);
+		  console.log(y);
+	  json_load(url).then( (resp) => {
+		  console.log(resp);
+		  ///////////////////////////////////////
+			json_load('http://slimjim.azurewebsites.net/prescription/' + resp['prescriptions'][0]).then( (prescription) => {
+				console.log('http://slimjim.azurewebsites.net/prescription/' + resp['prescriptions'][0]);
+				console.log(y);
+				prescription_load(prescription, y);
+				
+			});
+		///////////////////////////////////////////
+
 		  let img = createNode('img'),
 			  p = createNode('p'),
 			  a = createNode('a');
@@ -67,7 +100,7 @@ function json_load(url){
 		  img.style.height = "30px";
 		  img.style.float = "left";
 		  
-		  a.innerHTML = '<div class=\"d-flex w-100 justify-content-between"><h5 class="mb-1">' + `${patient.name.first} ${patient.name.last}` + '</h5><small>3 days ago</small></div><p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p><small>Donec id elit non mi porta.</small>' ;
+		  a.innerHTML = '<div class=\"d-flex w-100 justify-content-between"><h5 class="mb-1">' + `${resp.name}` + '</h5><small>3 days ago</small></div><p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p><small>' + `${resp.age}` + ' , ' + `${resp.gender}` + '</small>' ;
 		  a.classList.add('list-group-item');
 		  a.classList.add('list-group-item-action');
 		  a.classList.add('flex-column');
@@ -78,31 +111,93 @@ function json_load(url){
 		  a.style.float = "left";
 		  
 		  append(document.getElementById('patients'), a);
-		});
 	  }
 	  
-	  )
+	  );y++;}
   }
   
-	function prescription_load(){
-	  const ul = document.getElementById('authors');
-	  const url = 'https://randomuser.me/api/?results=10';
-	  fetch(url)
-	  .then((resp) => resp.json())
-	  .then(function(data) {
-		let authors = data.results;
-		return authors.map(function(author) {
-		  let li = createNode('li'),
+ async function prescription_load(prescription, x){
+	  
+	  //const url = 'http://meth.azurewebsites.net/patient/' + resp['patients'][i];
+	  
+	  //json_load(url).then( (resp) => {
+		//return resp.results.map(function(prescription) {
+		  let div = createNode('div'),
 			  img = createNode('img'),
-			  span = createNode('span');
-		  img.src = author.picture.medium;
-		  span.innerHTML = `${author.name.first} ${author.name.last}`;
-		  append(li, img);
-		  append(li, span);
-		  append(document.getElementById('authors'), li);
-		})
-	  })
-	  .catch(function(error) {
-		console.log(error);
-	  });
+			  h5 = createNode('h5');
+			  ul = createNode('ul');
+
+		  img.src = "..\\..\\UI Icons\\Web App\\pill_white.png";
+		  img.style.height = "30px";
+		  img.style.float = "left";
+		  img.style.marginLeft = "10px";
+		  
+		  h5.style.float = "left";
+		  h5.style.color = "white";
+		  h5.innerHTML = "&nbsp Prescription " + `${x}`;
+
+		  ul.classList.add("list-group");
+		  ul.classList.add("list-group-flush");
+		  
+		  append(div, img);
+		  append(div, h5);
+		  
+		  med_load(prescription, ul).then( (finall) => {
+			  ul = finall;
+			  append(div, ul);
+		  append(document.getElementById('infoo'), div);
+		  })
+		  .catch(function(error) {
+			console.log(error);
+			return error;
+		}); 
+		  
+		  
+		//});
+	  //}
+	  
+	  //)
   }
+  
+  
+ async function med_load(prescription, ul){
+	  
+	  //const url = 'http://meth.azurewebsites.net/patient/' + resp['patients'][i];
+	  var size = Object.size(prescription['medicines']);
+	  console.log(size);
+	  //json_load(url).then( (resp) => {
+		//return resp.results.map(function(med) {
+			//console.log(prescription['medicines'].keySet());
+		for (var key in prescription['medicines']) {
+			//	console.log(prescription['medicines'][i]);
+		  let span = createNode('span'),
+			  li = createNode('li');
+
+		  
+		  li.innerHTML = `${key}` + " Left:" + `${prescription.remaining[key]} `;
+		  li.classList.add('list-group-item');
+			  span.innerHTML = `${prescription.claimed}`;
+			  span.classList.add('badge');
+			  span.classList.add('badge-secondary');
+
+		  append(li, span);
+		  append(ul, li);
+		//});
+	  //}
+	  //i++;
+	  }
+	  return ul;
+	  //)
+  }
+  
+Object.size = function(obj) {
+    var size = 0, key;
+    for (key in obj) {
+        if (obj.hasOwnProperty(key)) size++;
+    }
+    return size;
+};
+
+// Get the size of an object
+//var size = Object.size(myArray);
+  

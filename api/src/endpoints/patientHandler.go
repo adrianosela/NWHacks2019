@@ -119,12 +119,55 @@ func (c *APIConfig) getPatientHandler(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte(fmt.Sprintf("patient %s not found", id)))
 		default:
 			w.WriteHeader(http.StatusInternalServerError)
-			w.Write([]byte(string(":(")))
+			w.Write([]byte(fmt.Sprintf("could not get patient %s: %s", id, err.Error())))
 			return
 		}
 	}
 	// marshal patient object
 	responseBytes, err := json.Marshal(p)
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		w.Write([]byte(string("could not marshall response")))
+		return
+	}
+	w.WriteHeader(http.StatusOK)
+	w.Write(responseBytes)
+	return
+}
+
+func (c *APIConfig) newPatientPrescriptionsHandler(w http.ResponseWriter, r *http.Request) {
+	// get ID from URL params
+	getParams := mux.Vars(r)
+	id, ok := getParams["id"]
+	if !ok {
+		w.WriteHeader(http.StatusBadRequest)
+		w.Write([]byte(string("no id specified")))
+		return
+	}
+	// get patient from store
+	p, err := c.DB.GetPatient(id)
+	if err != nil {
+		switch err {
+		case store.ErrNotInStore:
+			w.WriteHeader(http.StatusNotFound)
+			w.Write([]byte(fmt.Sprintf("patient %s not found", id)))
+		default:
+			w.WriteHeader(http.StatusInternalServerError)
+			w.Write([]byte(string(":(")))
+			return
+		}
+	}
+
+	var patientPresc struct {
+		Prescriptions []prescriptions.Prescription `json:"prescriptions"`
+	}
+	for _, presc := range p.Prescriptions {
+		// fail open for now
+		curPresc, _ := c.DB.GetPrescription(presc)
+		patientPresc.Prescriptions = append(patientPresc.Prescriptions, *curPresc)
+	}
+	// marshal patient object
+	responseBytes, err := json.Marshal(patientPresc)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		w.Write([]byte(string("could not marshall response")))

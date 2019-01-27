@@ -13,13 +13,29 @@ type Doctor struct {
 	Patients      []string `json:"patients"`
 }
 
+// NewDoctorConfig represents all the necessary info to create a new doctor
+type NewDoctorConfig struct {
+	Name           string `json:"name"`
+	Office         string `json:"office"`
+	Specialization string `json:"specialization"`
+}
+
 // NewDoctor is the constructor for the Doctor object
-func NewDoctor(name, office, specialization string) *Doctor {
+func NewDoctor(config NewDoctorConfig) (*Doctor, error) {
 	return &Doctor{
 		ID:            uuid.NewV4().String(), // FIXME: check unique
-		Name:          name,
-		Office:        office,
-		Specializaion: specialization,
+		Name:          config.Name,
+		Office:        config.Office,
+		Specializaion: config.Specialization,
 		Patients:      []string{},
-	}
+	}, nil
+	// FIXME: STORE IN DB AND CHECK UNIQUE
+}
+
+// GetDoctor returns a doctor given the doctor ID
+func GetDoctor(id string) (*Doctor, error) {
+	// FIXME: GET DOCTOR FROM DB
+	return &Doctor{
+		ID: id,
+	}, nil
 }

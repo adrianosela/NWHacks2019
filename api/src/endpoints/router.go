@@ -26,7 +26,8 @@ func GetHandlers(c APIConfig) *mux.Router {
 	// patients
 	router.Methods(http.MethodPost).Path("/patient").HandlerFunc(c.newPatientHandler)
 	router.Methods(http.MethodGet).Path("/patient/{id}").HandlerFunc(c.getPatientHandler)
-	router.Methods(http.MethodGet).Path("/patient_prescriptions/{id}").HandlerFunc(c.newPatientPrescriptionsHandler)
+	router.Methods(http.MethodGet).Path("/patient_prescriptions/{id}").HandlerFunc(c.getPatientPrescriptionsHandler)
+	router.Methods(http.MethodGet).Path("/patient_doctors/{id}").HandlerFunc(c.getPatientDoctorsHandler)
 
 	// prescriptions
 	router.Methods(http.MethodPost).Path("/prescription").HandlerFunc(c.newPrescriptionHandler)

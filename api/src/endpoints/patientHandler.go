@@ -135,7 +135,7 @@ func (c *APIConfig) getPatientHandler(w http.ResponseWriter, r *http.Request) {
 	return
 }
 
-func (c *APIConfig) newPatientPrescriptionsHandler(w http.ResponseWriter, r *http.Request) {
+func (c *APIConfig) getPatientPrescriptionsHandler(w http.ResponseWriter, r *http.Request) {
 	// get ID from URL params
 	getParams := mux.Vars(r)
 	id, ok := getParams["id"]
@@ -153,7 +153,7 @@ func (c *APIConfig) newPatientPrescriptionsHandler(w http.ResponseWriter, r *htt
 			w.Write([]byte(fmt.Sprintf("patient %s not found", id)))
 		default:
 			w.WriteHeader(http.StatusInternalServerError)
-			w.Write([]byte(string(":(")))
+			w.Write([]byte(fmt.Sprintf("could not get patient %s: %s", id, err.Error())))
 			return
 		}
 	}
@@ -168,6 +168,49 @@ func (c *APIConfig) newPatientPrescriptionsHandler(w http.ResponseWriter, r *htt
 	}
 	// marshal patient object
 	responseBytes, err := json.Marshal(patientPresc)
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		w.Write([]byte(string("could not marshall response")))
+		return
+	}
+	w.WriteHeader(http.StatusOK)
+	w.Write(responseBytes)
+	return
+}
+
+func (c *APIConfig) getPatientDoctorsHandler(w http.ResponseWriter, r *http.Request) {
+	// get ID from URL params
+	getParams := mux.Vars(r)
+	id, ok := getParams["id"]
+	if !ok {
+		w.WriteHeader(http.StatusBadRequest)
+		w.Write([]byte(string("no id specified")))
+		return
+	}
+	// get patient from store
+	p, err := c.DB.GetPatient(id)
+	if err != nil {
+		switch err {
+		case store.ErrNotInStore:
+			w.WriteHeader(http.StatusNotFound)
+			w.Write([]byte(fmt.Sprintf("patient %s not found", id)))
+		default:
+			w.WriteHeader(http.StatusInternalServerError)
+			w.Write([]byte(fmt.Sprintf("could not get patient %s: %s", id, err.Error())))
+			return
+		}
+	}
+
+	var patientDrs struct {
+		Doctors []doctors.Doctor `json:"doctors"`
+	}
+	for _, dr := range p.Doctors {
+		// fail open for now
+		curDr, _ := c.DB.GetDoctor(dr)
+		patientDrs.Doctors = append(patientDrs.Doctors, *curDr)
+	}
+	// marshal patient object
+	responseBytes, err := json.Marshal(patientDrs)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		w.Write([]byte(string("could not marshall response")))

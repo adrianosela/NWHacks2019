@@ -202,14 +202,13 @@ func (c *APIConfig) getPatientDoctorsHandler(w http.ResponseWriter, r *http.Requ
 	}
 
 	var patientDrs struct {
-		Doctors map[string]doctors.Doctor `json:"doctors"`
+		Doctors []doctors.Doctor `json:"doctors"`
 	}
-	patientDrs.Doctors = make(map[string]doctors.Doctor)
 
 	for _, dr := range p.Doctors {
 		// fail open for now
 		curDr, _ := c.DB.GetDoctor(dr)
-		patientDrs.Doctors[dr] = *curDr
+		patientDrs.Doctors = append(patientDrs.Doctors, *curDr)
 	}
 	// marshal patient object
 	responseBytes, err := json.Marshal(patientDrs)

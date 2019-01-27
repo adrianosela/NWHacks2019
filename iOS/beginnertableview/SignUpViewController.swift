@@ -43,6 +43,7 @@ class SignUpViewController: UIViewController {
             if let result = response.result.value {
                 let JSON = result as! NSDictionary
                 print(JSON["id"])
+                if(JSON["id"] == nil){return}
                 UserDefaults.standard.set(JSON["id"]!, forKey: "id")
                 self.showGame()
             }

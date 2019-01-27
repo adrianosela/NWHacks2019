@@ -116,7 +116,7 @@
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f1i-Uz-EVM">
-                                        <rect key="frame" x="322" y="45" width="45" height="45"/>
+                                        <rect key="frame" x="315" y="45" width="45" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="45" id="0fH-vu-pNX"/>
                                             <constraint firstAttribute="height" constant="45" id="60V-UZ-KJ0"/>
@@ -128,7 +128,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="E7v-Wt-shp"/>
                                     <constraint firstAttribute="bottom" secondItem="f1i-Uz-EVM" secondAttribute="bottom" constant="10" id="FYH-oG-V8O"/>
-                                    <constraint firstAttribute="trailing" secondItem="f1i-Uz-EVM" secondAttribute="trailing" constant="8" id="Ra7-z9-Zwn"/>
+                                    <constraint firstAttribute="trailing" secondItem="f1i-Uz-EVM" secondAttribute="trailing" constant="15" id="Ra7-z9-Zwn"/>
                                     <constraint firstItem="oTg-F3-q9k" firstAttribute="leading" secondItem="1gK-0w-d7C" secondAttribute="leading" constant="8" id="euq-Ny-72m"/>
                                     <constraint firstAttribute="bottom" secondItem="oTg-F3-q9k" secondAttribute="bottom" constant="5" id="g8H-NJ-bt2"/>
                                 </constraints>

@@ -4,6 +4,12 @@ clean:
 	rm -rf pkg bin
 	rm nwhacks_api*
 
+upload: tag
+	docker push adrianosela/nwhacks_api:laptop_push
+
+tag: dockerbuild
+	docker tag nwhacks_api:latest adrianosela/nwhacks_api:laptop_push
+
 deploy: dockerbuild down
 	docker run -d --name nwhacks_backend -p 8080:80 nwhacks_api	# run docker image as "nwhacks_backend"
 
@@ -12,7 +18,7 @@ up: build
 
 dockerbuild:
 	GOOS=linux GOARCH=amd64 go build -a -o nwhacks_api_linux 	# build a golang binary for linux
-	docker build -t nwhacks_api . 					# build docker image from this dir
+	docker build -t nwhacks_api:latest . 				# build docker image from this dir
 
 build:
 	go build -o nwhacks_api_local 					# build a golang binary for your host machine (e.g. laptop)

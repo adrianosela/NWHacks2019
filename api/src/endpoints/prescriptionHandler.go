@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"net/http"
 
+	"github.com/adrianosela/GoTools/primitives/slices"
 	"github.com/adrianosela/NWHacks2019/api/src/objects/prescriptions"
 	"github.com/adrianosela/NWHacks2019/api/src/store"
 	"github.com/gorilla/mux"
@@ -151,7 +152,10 @@ func (c *APIConfig) claimPrescriptionHandler(w http.ResponseWriter, r *http.Requ
 		}
 	}
 	pt.Prescriptions = append(pt.Prescriptions, claimRxReq.PrescriptionID)
-	pt.Doctors = append(pt.Doctors, p.Doctor)
+	// add doctor to patients doctors if not already there
+	if !slices.ContainsString(pt.Doctors, p.Doctor) {
+		pt.Doctors = append(pt.Doctors, p.Doctor)
+	}
 
 	if err = c.DB.UpdatePatient(pt); err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
@@ -173,7 +177,9 @@ func (c *APIConfig) claimPrescriptionHandler(w http.ResponseWriter, r *http.Requ
 			return
 		}
 	}
-	dr.Patients = append(dr.Patients, claimRxReq.PatientID)
+	if !slices.ContainsString(dr.Patients, claimRxReq.PatientID) {
+		dr.Patients = append(dr.Patients, claimRxReq.PatientID)
+	}
 
 	if err = c.DB.UpdateDoctor(dr); err != nil {
 		w.WriteHeader(http.StatusInternalServerError)

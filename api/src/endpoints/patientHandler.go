@@ -44,7 +44,7 @@ func (c *APIConfig) newPatientHandler(w http.ResponseWriter, r *http.Request) {
 				return
 			default:
 				w.WriteHeader(http.StatusInternalServerError)
-				w.Write([]byte(string(":(")))
+				w.Write([]byte(fmt.Sprintf("could not get prescription %s: %s", patient.Prescriptions[0], err.Error())))
 				return
 			}
 		}
@@ -54,7 +54,7 @@ func (c *APIConfig) newPatientHandler(w http.ResponseWriter, r *http.Request) {
 		pres.Patient = patient.ID
 		if err = c.DB.UpdatePrescription(pres); err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
-			w.Write([]byte(string(":("))) //FIXME
+			w.Write([]byte(fmt.Sprintf("could not update prescription %s: %s", pres.ID, err.Error())))
 			return
 		}
 		// tie doctor associated with prescription to the user
@@ -64,13 +64,13 @@ func (c *APIConfig) newPatientHandler(w http.ResponseWriter, r *http.Request) {
 		dr, err = c.DB.GetDoctor(pres.Doctor)
 		if err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
-			w.Write([]byte(string(":("))) //FIXME
+			w.Write([]byte(fmt.Sprintf("could not get doctor %s: %s", pres.ID, err.Error())))
 			return
 		}
 		dr.Patients = append(dr.Patients, patient.ID)
 		if err = c.DB.UpdateDoctor(dr); err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
-			w.Write([]byte(string(":("))) //FIXME
+			w.Write([]byte(fmt.Sprintf("could not update doctor %s: %s", dr.ID, err.Error())))
 			return
 		}
 
@@ -84,7 +84,7 @@ func (c *APIConfig) newPatientHandler(w http.ResponseWriter, r *http.Request) {
 			return
 		default:
 			w.WriteHeader(http.StatusInternalServerError)
-			w.Write([]byte(string(":(")))
+			w.Write([]byte(fmt.Sprintf("could not put patient %s: %s", patient.ID, err.Error())))
 			return
 		}
 	}

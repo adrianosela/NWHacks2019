@@ -34,7 +34,7 @@ func (c *APIConfig) newPatientHandler(w http.ResponseWriter, r *http.Request) {
 	// if request contains prescription, tie doctor to patient
 	if patReq.NewPrescriptionID != "" {
 		var pres *prescriptions.Prescription
-		pres, err = c.DB.GetPrescription(patReq.NewPrescriptionID)
+		pres, err = c.DB.GetPrescription(patient.Prescriptions[0])
 		// fail closed if there was a problem with the provided prescription
 		if err != nil {
 			switch err {

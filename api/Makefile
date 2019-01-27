@@ -20,7 +20,7 @@ tag: dockerbuild
 	docker tag nwhacks_api:latest adrianosela/nwhacks_api:laptop_push # tag image with the docker hub repo name
 
 up: dockerbuild down
-	docker run -d --name nwhacks_backend -p 8080:80 nwhacks_api	# run docker image as "nwhacks_backend"
+	docker run --env MONGODB_PASSWORD="$${MONGODB_PASSWORD}" -d --name nwhacks_backend -p 8080:80 nwhacks_api	# run docker image as "nwhacks_backend"
 
 run: build
 	./nwhacks_api_local 						# run binary

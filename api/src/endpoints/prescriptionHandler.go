@@ -9,7 +9,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func newPrescriptionHandler(w http.ResponseWriter, r *http.Request) {
+func (c *APIConfig) newPrescriptionHandler(w http.ResponseWriter, r *http.Request) {
 	// read req body
 	bodyBytes, err := ioutil.ReadAll(r.Body)
 	defer r.Body.Close()
@@ -39,7 +39,7 @@ func newPrescriptionHandler(w http.ResponseWriter, r *http.Request) {
 	return
 }
 
-func getPrescriptionHandler(w http.ResponseWriter, r *http.Request) {
+func (c *APIConfig) getPrescriptionHandler(w http.ResponseWriter, r *http.Request) {
 	// get prescription id from URL
 	getParams := mux.Vars(r)
 	id, ok := getParams["id"]

@@ -10,7 +10,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func newDoctorHandler(w http.ResponseWriter, r *http.Request) {
+func (c *APIConfig) newDoctorHandler(w http.ResponseWriter, r *http.Request) {
 	// read req body
 	bodyBytes, err := ioutil.ReadAll(r.Body)
 	defer r.Body.Close()
@@ -45,7 +45,7 @@ func newDoctorHandler(w http.ResponseWriter, r *http.Request) {
 	return
 }
 
-func getDoctorHandler(w http.ResponseWriter, r *http.Request) {
+func (c *APIConfig) getDoctorHandler(w http.ResponseWriter, r *http.Request) {
 	// get ID from URL params
 	getParams := mux.Vars(r)
 	id, ok := getParams["id"]

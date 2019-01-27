@@ -11,7 +11,8 @@ import (
 
 // APIConfig holds all necessary configurations for the service to run
 type APIConfig struct {
-	DB store.DB
+	DB         store.DB
+	DeployTime time.Time
 }
 
 // GetHandlers returns an HTTP MUX with the service's handler functions
@@ -31,9 +32,9 @@ func GetHandlers(c APIConfig) *mux.Router {
 	router.Methods(http.MethodGet).Path("/prescription/{id}").HandlerFunc(c.getPrescriptionHandler)
 
 	// test endpoint
-	router.Methods(http.MethodGet).Path("/prescription/{id}").HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	router.Methods(http.MethodGet).Path("/test").HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
-		w.Write([]byte(fmt.Sprintf("running! it is right now %s", time.Now().String())))
+		w.Write([]byte(fmt.Sprintf("instance deployed at %s", c.DeployTime.String())))
 	})
 
 	return router

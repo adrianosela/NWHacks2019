@@ -1,7 +1,7 @@
 package doctors
 
 import (
-	uuid "github.com/satori/go.uuid"
+	"github.com/satori/go.uuid"
 )
 
 var defaultImage = "https://nwhacksstorage.blob.core.windows.net/doctors/noimg.png"

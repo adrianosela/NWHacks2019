@@ -3,7 +3,7 @@ package prescriptions
 import (
 	"time"
 
-	uuid "github.com/satori/go.uuid"
+	"github.com/satori/go.uuid"
 )
 
 // Prescription represents a prescription from a doctor to a patient

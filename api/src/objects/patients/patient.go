@@ -1,7 +1,7 @@
 package patients
 
 import (
-	uuid "github.com/satori/go.uuid"
+	"github.com/satori/go.uuid"
 )
 
 // Patient represents patients in the system

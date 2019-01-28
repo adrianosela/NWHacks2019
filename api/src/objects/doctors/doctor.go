@@ -1,7 +1,7 @@
 package doctors
 
 import (
-	"github.com/satori/go.uuid"
+	uuid "github.com/satori/go.uuid"
 )
 
 var defaultImage = "https://nwhacksstorage.blob.core.windows.net/doctors/noimg.png"
@@ -29,7 +29,7 @@ type NewDoctorConfig struct {
 // NewDoctor is the constructor for the Doctor object
 func NewDoctor(config NewDoctorConfig) *Doctor {
 	d := &Doctor{
-		ID:            uuid.NewV4().String(),
+		ID:            uuid.Must(uuid.NewV4()).String(),
 		Name:          config.Name,
 		Office:        config.Office,
 		OfficePhone:   config.OfficePhone,

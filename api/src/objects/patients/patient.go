@@ -31,7 +31,7 @@ type NewPatientConfig struct {
 // whether new user is joining with a prescription or not
 func NewPatient(config NewPatientConfig) *Patient {
 	p := &Patient{
-		ID:            uuid.NewV4().String(),
+		ID:            uuid.Must(uuid.NewV4()).String(),
 		Name:          config.Name,
 		Email:         config.Email,
 		Phone:         config.Phone,

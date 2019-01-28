@@ -34,7 +34,7 @@ type ClaimPrescriptionConfig struct {
 // NewPrescription adds a new prescription to the system
 func NewPrescription(config NewPrescriptionConfig) *Prescription {
 	p := &Prescription{
-		ID:        uuid.NewV4().String(), // FIXME: check unique
+		ID:        uuid.Must(uuid.NewV4()).String(), // FIXME: check unique
 		AddedAt:   time.Now().UnixNano(),
 		Medicines: config.Medicines,
 		Remaining: config.Amounts,
